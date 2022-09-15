@@ -24,9 +24,6 @@
                 <span>Cerrar Sesión</span>
                <form action="{{ route('logout') }}" method="post" style="display: none;"id="formLogout">
                  @csrf
-             </form>
-
-              </a>
-        
-
+                </form>
+              </a>     
 </div>

@@ -11,10 +11,10 @@
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
   <!-- Icons -->
-  <link href="{{asset ('js/plugins/nucleo/css/nucleo.css')}}" rel="stylesheet" />
-  <link href="{{asset  ('js/plugins/@fortawesome/fontawesome-free/css/all.min.css')}}" rel="stylesheet" />
+  <link href="{{asset ('js/plugins/nucleo/css/nucleo.css')}}" rel="stylesheet">
+  <link href="{{asset ('js/plugins/@fortawesome/fontawesome-free/css/all.min.css')}}" rel="stylesheet">
   <!-- CSS Files -->
-  <link href="{{asset ('css/argon-dashboard.css?v=1.1.2')}}" rel="stylesheet" />
+  <link href="{{asset ('css/argon-dashboard.css?v=1.1.2')}}" rel="stylesheet">
 </head>
 
 <body class="">
@@ -26,7 +26,7 @@
       </button>
       <!-- Brand -->
       <a class="navbar-brand pt-0" href="./index.html">
-        <img src="{{asset ('img/brand/blue.png')}}" class="navbar-brand-img" alt="...">
+        <img src="{{asset('img/brand/blue.png')}}" class="navbar-brand-img" alt="...">
       </a>
       <!-- User -->
       <ul class="nav align-items-center d-md-none">
@@ -114,7 +114,7 @@
                 <div class="media-body ml-2 d-none d-lg-block">
                   <span class="mb-0 text-sm  font-weight-bold">{{auth()->user()->name}}</span>
                 </div>
-                
+
               </div>
             </a>
             @include('includes.panel.userOptions')
@@ -132,7 +132,7 @@
     </div>
   </div>
   <!--   Core   -->
-  <script src="{{asset('plugins/jquery/dist/jquery.min.js')}}"></script>
+  <script src="{{asset('js/plugins/jquery/dist/jquery.min.js')}}"></script>
   <script src="{{asset('js/plugins/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
   <!--   Optional JS   -->
   <script src="{{asset('js/plugins/chart.js/dist/Chart.min.js')}}"></script>

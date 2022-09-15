@@ -16,9 +16,9 @@
 
 */
 :root {
-  --blue: #5e72e4;
-  --indigo: #5603ad;
-  --purple: #8965e0;
+  --blue: #0629f1;
+  --indigo: #131016;
+  --purple: #0803f7;
   --pink: #f3a4b5;
   --red: #f5365c;
   --orange: #fb6340;
@@ -13469,7 +13469,7 @@ button.bg-lighter:focus {
 }
 
 .bg-gradient-primary {
-  background: linear-gradient(87deg, #5e72e4 0, #825ee4 100%) !important;
+  background: linear-gradient(87deg, #00f7b5 0, #825ee4 100%) !important;
 }
 
 .bg-gradient-secondary {
@@ -13764,7 +13764,7 @@ button.section-darker:focus {
 }
 
 .bg-gradient-primary {
-  background: linear-gradient(87deg, #5e72e4 0, #825ee4 100%) !important;
+  background: linear-gradient(83deg, #5e72e4 0, #03acca 100%) !important;
 }
 
 .bg-gradient-secondary {
@@ -16120,7 +16120,7 @@ textarea[resize="horizontal"] {
 }
 
 .icon-xl+.icon-text {
-  width: calc(100% - $icon-size-xl - 1);
+  width: calc(100% - icon-size-xl - 1);
 }
 
 .icon-lg {
@@ -16134,7 +16134,7 @@ textarea[resize="horizontal"] {
 }
 
 .icon-lg+.icon-text {
-  width: calc(100% - $icon-size-lg - 1);
+  width: calc(100% - icon-size-lg - 1);
 }
 
 .icon-sm {
@@ -16148,7 +16148,7 @@ textarea[resize="horizontal"] {
 }
 
 .icon-sm+.icon-text {
-  width: calc(100% - $icon-size-sm - 1);
+  width: calc(100% - icon-size-sm - 1);
 }
 
 .icon-shape {
