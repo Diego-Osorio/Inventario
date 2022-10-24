@@ -6,10 +6,10 @@
             <div class="card-header border-0">
               <div class="row align-items-center">
                 <div class="col">
-                  <h3 class="mb-0">Categorias</h3>
+                  <h3 class="mb-0">Usuarios</h3>
                 </div>
                 <div class="col text-right">
-                  <a href="{{url('/categorias/create')}}" class="btn btn-sm btn-primary">Nueva Categoria</a>
+                  <a href="{{url('/usuario/create')}}" class="btn btn-sm btn-primary">Nueva usuario</a>
                 </div>
               </div>
             </div>
@@ -26,26 +26,33 @@
                 <thead class="thead-light">
                   <tr>
                     <th scope="col">Nombre</th>
-                    <th scope="col">Descripcion</th>
-                    <th scope="col">opciones</th>
+                    <th scope="col">Correo</th>
+                    <th scope="col">Role</th>
+                    <th scope="col">Opciones</th>
+                    
+
                     
                   </tr>
                 </thead>
                 <tbody>
-                  @foreach($categories as $categorias)
+                  @foreach($admins as $admin)
                   <tr>
                     <th scope="row">
-                      {{$categorias->name}}
+                      {{$admin->name}}
                     </th>
                     <td>
-                      {{$categorias->descripcion}}
+                      {{$admin->email}}
                     </td>
                     <td>
+                      {{$admin->role}}
+                    </td>
+                    
+                    <td>
                       
-                      <form action="{{url('/categorias/'.$categorias->id) }}"method="POST">
+                      <form action="{{url('/usuario/'.$admin->id) }}"method="POST">
                         @csrf
                         @method('DELETE')
-                        <a href="{{ url('/categorias/'.$categorias->id.'/edit') }}"class="btn btn-sm btn-primary">Editar</a>
+                        <a href="{{ url('/usuario/'.$admin->id.'/edit') }}"class="btn btn-sm btn-primary">Editar</a>
                         <button type="submit" class="btn btn-sm btn-danger">Eliminar </button>
 
                       </form>
