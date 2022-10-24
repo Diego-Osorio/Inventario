@@ -1,18 +1,17 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Models\categorias;
 use App\Models\categoria;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Redirect;
+
 
 class categoriasController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+   
 
     public function index(){
         $categories = categorias::all();
@@ -27,10 +26,12 @@ class categoriasController extends Controller
 
          $rules = [
             'name' => 'required|min:5'
+            
          ];
          $messages = [
             'name.required' => 'El Nombre de la categoria Es obligatorio ',
-            'name.min' => 'El nombre de la Categoria Debe tener mas de 5 caracteres.'
+            'name.min' => 'El nombre de la Categoria Debe tener mas de 5 caracteres.',
+            
          ];
 
        $this->validate($request, $rules, $messages);
@@ -53,10 +54,13 @@ class categoriasController extends Controller
 
       $rules = [
          'name' => 'required|min:5'
+          
       ];
       $messages = [
-         'name.required' => 'El Nombre de la categoria Es obligatorio ',
-         'name.min' => 'El nombre de la Categoria Debe tener mas de 5 caracteres.'
+         'name.required' => 'El Nombre de la Categoria Es obligatorio ',
+         'name.required' => 'El Nombre debe Empezar con Mayuscula',
+         'name.min' => 'El nombre de la Categoria Debe tener mas de 5 caracteres.',
+         
       ];
 
     $this->validate($request, $rules, $messages);

@@ -25,7 +25,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <!-- Brand -->
-      <a class="navbar-brand pt-0" href="./index.html">
+      <a class="navbar-brand pt-0" href="./home">
         <img src="{{asset('img/brand/blue.png')}}" class="navbar-brand-img" alt="...">
       </a>
       <!-- User -->
@@ -91,7 +91,7 @@
     <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
       <div class="container-fluid">
         <!-- Brand -->
-        <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="./index.html">Inventario</a>
+        <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="./home">Inventario</a>
         <!-- Form -->
         <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
           <div class="form-group mb-0">
@@ -124,7 +124,7 @@
     </nav>
     <!-- End Navbar -->
     <!-- Header -->
-    <div class="header bg-gradient-primary pb-9 pt-6 pt-md-9">
+    <div class="header bg-gradient-primary pb-8 pt-4 pt-md-6">
           @yield('content')
               <!-- Projects table -->
             

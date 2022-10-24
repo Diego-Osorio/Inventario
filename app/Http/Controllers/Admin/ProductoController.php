@@ -1,19 +1,17 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\producto;
 use Illuminate\Http\Request;
 
-class UsersController extends Controller
+class ProductoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+   
     public function index()
     {
-        //
+        $productos = Producto::ordenBy('created_at')->get();
+   
+        return view('admins.productos',compact('productos'));
     }
 
     /**

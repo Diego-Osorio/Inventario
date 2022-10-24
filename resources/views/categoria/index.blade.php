@@ -6,10 +6,10 @@
             <div class="card-header border-0">
               <div class="row align-items-center">
                 <div class="col">
-                  <h3 class="mb-0">Usuarios</h3>
+                  <h3 class="mb-0">Categorias</h3>
                 </div>
                 <div class="col text-right">
-                  <a href="{{url('/usuario/create')}}" class="btn btn-sm btn-primary">Nuevo usuario</a>
+                  <a href="{{url('')}}" class="btn btn-sm btn-primary"></a>
                 </div>
               </div>
             </div>
@@ -26,35 +26,29 @@
                 <thead class="thead-light">
                   <tr>
                     <th scope="col">Nombre</th>
-                    <th scope="col">Correo</th>
-                    <th scope="col">Role</th>
-                    <th scope="col">Opciones</th>
-                    
-
+                    <th scope="col">Descripcion</th>
+                    <th scope="col">opciones</th>
                     
                   </tr>
                 </thead>
                 <tbody>
-                  @foreach($admins as $admin)
+                  @foreach($categories as $categorias)
                   <tr>
                     <th scope="row">
-                      {{$admin->name}}
+                      {{$categorias->name}}
                     </th>
                     <td>
-                      {{$admin->email}}
+                      {{$categorias->descripcion}}
                     </td>
+
                     <td>
-                      {{$admin->role}}
+                      {{$categorias->stock}}
                     </td>
-                    
                     <td>
                       
-                      <form action="{{url('/usuario/'.$admin->id) }}"method="POST">
+                      <form action="{{url('/categoria/'.$categorias->id) }}"method="POST">
                         @csrf
                         @method('DELETE')
-                        <a href="{{ url('/usuario/'.$admin->id.'/edit') }}"class="btn btn-sm btn-primary">Editar</a>
-                        <button type="submit" class="btn btn-sm btn-danger">Eliminar </button>
-
                       </form>
                       
                     </td>
@@ -62,9 +56,6 @@
                   @endforeach
                 </tbody>
               </table>
-            </div>
-            <div class="card-body">
-             {{$admins->links()}}
             </div>
           </div>
 @endsection

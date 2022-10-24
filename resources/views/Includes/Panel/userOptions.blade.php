@@ -10,7 +10,7 @@
                 <i class="ni ni-settings-gear-65"></i>
                 <span>Configuracion</span>
               </a>
-              <a href="#" class="dropdown-item">
+              <a href="/inventario" class="dropdown-item">
                 <i class="ni ni-calendar-grid-58"></i>
                 <span>Inventario</span>
               </a>

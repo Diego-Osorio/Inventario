@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\users;
+use App\Http\Controllers\Controller;
 use Symfony\Component\Mime\Email;
 
 class AdminController extends Controller
@@ -12,7 +13,8 @@ class AdminController extends Controller
     
     public function index()
     {
-        $admins = User::all();
+        $admins = User::paginate(10);
+        
         return view('admins.index', compact('admins'));
     }
 
@@ -33,7 +35,7 @@ class AdminController extends Controller
         $rules = [
             'name'=>'required|min:5',
             'email'=>'required|email',
-            'password'=>'required|digits:7',
+            'password'=>'required',
             'address'=>'required',
             'phone' =>'required',
         ];
@@ -84,13 +86,13 @@ class AdminController extends Controller
             'phone' =>'required',
         ];
         $messages =[
-            'name.required' => 'El nombre de usuario es Obligatorio',
+            'name.required' => 'El nombre de usuario es obligatorio',
             'name.min' => 'El nombre de usuario debe tener m as de 5 caracteres ',
-            'email.required' => 'El Correo Electronico es Obligatorio',
+            'email.required' => 'El Correo Electronico es obligatorio',
             'email.email' => 'Ingresa una direccion de correo electronico  valido',
             'address.required' => 'La Direccion es obigatoria',
             'phone.required' => 'El número de teléfono es obligatorio',
-            'password.required'=>'La contraseña es Obligatoria.',
+            
             'password.min'=> 'La contraseña debe tener minimo 7 caracteres.',
 
         ];
@@ -110,15 +112,18 @@ class AdminController extends Controller
         return redirect('/usuario')->with(compact('notification'));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     public function destroy($id)
     {
-        //
+      $user = User::findOrFail($id);
+      $userName = $user->name;
+      $user->delete();
+
+      $notification = "El Usuario $userName elimino correctamente ";
+
+
+
+       return redirect('/usuario')->with(compact('notification'));
     }
 	/**
 	 */

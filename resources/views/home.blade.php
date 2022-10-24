@@ -18,6 +18,7 @@
                 </div>
             </div>
         </div>
+        @if(auth()->user()->role =='admin')
           <!-- categoria -->
             <div class="col-xl-3 col-lg-6">
             <a class="nav-link " href="{{url('/categorias')}}">
@@ -25,8 +26,10 @@
                 <div class="card-body">
                   <div class="row">
                     <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0">Categorias</h5>
-                    </div>
+                      
+                    <h5 class="card-title text-uppercase text-muted mb-0">Categorias</h5>
+                    <span class="h2 font-weight-bold mb-0">1</span>  
+                  </div>
                     <div class="col-auto">
                       
                       <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
@@ -38,6 +41,7 @@
                       </div>
                       
                     </div>
+                    
                   </div>
                  
                   
@@ -46,13 +50,14 @@
             </div>
            <!-- usuario -->
             <div class="col-xl-3 col-lg-6">
-            <a class="nav-link " href="{{url('/usuarios')}}">
+            <a class="nav-link " href="{{url('/usuario')}}">
               <div class="card card-stats mb-4 mb-xl-0">
                 <div class="card-body">
            
                   <div class="row">
                     <div class="col">
-                      <h5s class="card-title text-uppercase text-muted mb-0"> usuarios</h5>
+                      <h5 class="card-title text-uppercase text-muted mb-0"> usuarios</h5>
+                      <span class="h2 font-weight-bold mb-0">50</span>
                       <span class="h2 font-weight-bold mb-0"></span>
                     </div>
                     <div class="col-auto">
@@ -73,7 +78,7 @@
                   <div class="row">
                     <div class="col">
                       <h5 class="card-title text-uppercase text-muted mb-0">Productos</h5>
-                      <span class="h2 font-weight-bold mb-0"></span>
+                      <span class="h2 font-weight-bold mb-0">50</span>
                     </div>
                     <div class="col-auto">
                       <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
@@ -95,7 +100,8 @@
                   <div class="row">
                     <div class="col">
                       <h5 class="card-title text-uppercase text-muted mb-0">Inventario</h5>
-                      <span class="h2 font-weight-bold mb-0"></span>
+                      <span class="h2 font-weight-bold mb-0">2,356</span>
+                      <span class="h2 font-weight-bold mb-0">50</span>
                     </div>
                     <div class="col-auto">
                       <div class="icon icon-shape bg-info text-white rounded-circle shadow">
@@ -108,8 +114,68 @@
             </div>
           </div>
         </div>
-      </div>
-    </div>
+        @elseif(auth()->user()->role =='usuario')
+        <!-- categoria -->
+        <div class="col-xl-3 col-lg-6">
+            <a class="nav-link " href="{{url('/categoria')}}">
+              <div class="card card-stats mb-4 mb-xl-0">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col">
+                      
+                    <h5 class="card-title text-uppercase text-muted mb-0">Categorias</h5>
+                    <span class="h2 font-weight-bold mb-0">1</span>  
+                  </div>
+                    <div class="col-auto">
+                      
+                      <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
+                        <i class="fas fa-sitemap"></i>
+                      <div>
+                        
+                      </div>
+                           
+                      </div>
+                      
+                    </div>
+                    
+                  </div>
+                 
+                  
+                </div>
+              </div>
+            </div>
+
+             <!-- productos -->
+             <div class="col-xl-3 col-lg-6">
+            <a class="nav-link " href="{{url('/producto')}}">
+              <div class="card card-stats mb-4 mb-xl-0">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col">
+                      <h5 class="card-title text-uppercase text-muted mb-0">Productos</h5>
+                      <span class="h2 font-weight-bold mb-0">50</span>
+                    </div>
+                    <div class="col-auto">
+                      <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
+                        <i class="fas fa-chart-pie"></i>
+                        
+                      </div>
+                    </div>
+                  </div>
+                  
+                
+                </div>
+              </div>
+            </div>
+
+
+
+        
+        @endif
+
+
+        
+     
     
              
 @endsection

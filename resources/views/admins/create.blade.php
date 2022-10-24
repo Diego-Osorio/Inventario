@@ -46,10 +46,11 @@ use Illuminate\Support\Str;
                     <label for="email">Correo electronico</label>
                     <input type="text"name="email" class="form-control" value="{{old('email')}}" >
                  </div>
+                    <!-- Brand 
                  <div class="form-group">
                     <label for="rol">Rol </label>
                     <input type="text"name="rol" class="form-control" value="{{old('rol')}}" >
-                 </div>
+                 </div> -->
                  <div class="form-group">
                     <label for="password">Contraseña </label>
                     <input type="text"name="password" class="form-control" value="{{old('password', Str::random(8)) }}" >
@@ -58,7 +59,12 @@ use Illuminate\Support\Str;
                     <label for="phone">Telefono </label>
                     <input type="text"name="phone" class="form-control" value="{{old('phone') }}" >
                  </div>
-                 <button type="submit" class="btn btn-sm btn-primary ">Crear Categoria</button>
+                 <div class="form-group">
+                    <label for="address">Direccion </label>
+                    <input type="text"name="address" class="form-control" value="{{old('address') }}" >
+                 </div>
+
+                 <button type="submit" class="btn btn-sm btn-primary ">Crear usuario</button>
                 </form>
                  </div>
           </div>
