@@ -22,18 +22,23 @@ Route::put('/categorias/{categoria}', [App\Http\Controllers\admin\categoriasCont
 Route::delete('/categorias/{categoria}', [App\Http\Controllers\admin\categoriasController::class, 'destroy']);
 
 
+});
+
 //Rutas Admin
 
 Route::resource('usuario',  'App\http\Controllers\admin\AdminController');
 
 
-//Rutas Usuariosv 
-Route::resource('usuarius',  'App\http\Controllers\AdminController');
-  
-});
-
+//ruta Inventarios
 Route::middleware(['auth', 'producto'])->group(function () {
 
 Route::get('/inventario', [App\Http\Controllers\Admin\InventarioController::class, 'edit']);
 Route::get('/inventario/create', [App\Http\Controllers\Admin\InventarioController::class, 'create']);
+});
+
+//Rutas Usuarios
+Route::middleware(['auth', 'categoria'])->group(function () {
+    Route::get('/categoria', [App\Http\Controllers\Admin\categoriaController::class, 'index']);
+    Route::get('/producto', [App\Http\Controllers\Admin\ProductoController::class, 'index']);
+
 });

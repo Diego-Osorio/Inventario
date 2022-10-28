@@ -19,153 +19,134 @@
             </div>
         </div>
         @if(auth()->user()->role =='admin')
-          <!-- categoria -->
-            <div class="col-xl-3 col-lg-6">
-            <a class="nav-link " href="{{url('/categorias')}}">
-              <div class="card card-stats mb-4 mb-xl-0">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col">
-                      
-                    <h5 class="card-title text-uppercase text-muted mb-0">Categorias</h5>
-                    <span class="h2 font-weight-bold mb-0">1</span>  
-                  </div>
-                    <div class="col-auto">
-                      
-                      <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
-                        <i class="fas fa-sitemap"></i>
-                      <div>
-                        
-                      </div>
-                           
-                      </div>
-                      
-                    </div>
-                    
-                  </div>
-                 
-                  
-                </div>
-              </div>
-            </div>
-           <!-- usuario -->
-            <div class="col-xl-3 col-lg-6">
-            <a class="nav-link " href="{{url('/usuario')}}">
-              <div class="card card-stats mb-4 mb-xl-0">
-                <div class="card-body">
-           
-                  <div class="row">
-                    <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0"> usuarios</h5>
-                      <span class="h2 font-weight-bold mb-0">50</span>
-                      <span class="h2 font-weight-bold mb-0"></span>
-                    </div>
-                    <div class="col-auto">
-                      <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
-                        <i class="fas fa-users"></i>
-                      </div>
-                    </div>
-                  </div>
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                        <a class="nav-link " href="{{url('/categorias')}}">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                Categoria</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-sitemap"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-                </div>
-              </div>
-            </div>
-              <!-- productos -->
-            <div class="col-xl-3 col-lg-6">
-            <a class="nav-link " href="{{url('/productos')}}">
-              <div class="card card-stats mb-4 mb-xl-0">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0">Productos</h5>
-                      <span class="h2 font-weight-bold mb-0">50</span>
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                        <a class="nav-link " href="{{url('/usuario')}}">
+                            <div class="card border-left-success shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                Usuario</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$50</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-users"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                        <a class="nav-link " href="{{url('/productos')}}">
+                            <div class="card border-left-info shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Productos
+                                            </div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="progress progress-sm mr-2">
+                                                        <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-chart-pie"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pending Requests Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                        <a class="nav-link " href="{{url('/inventarios')}}">
+                            <div class="card border-left-warning shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                              Inventario</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-percent"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-auto">
-                      <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
-                        <i class="fas fa-chart-pie"></i>
-                        
-                      </div>
-                    </div>
-                  </div>
-                  
-                
-                </div>
-              </div>
-            </div>
-              <!-- inventario -->
-            <div class="col-xl-3 col-lg-6">
-            <a class="nav-link " href="{{url('/inventario')}}">
-              <div class="card card-stats mb-4 mb-xl-0">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0">Inventario</h5>
-                      <span class="h2 font-weight-bold mb-0">2,356</span>
-                      <span class="h2 font-weight-bold mb-0">50</span>
-                    </div>
-                    <div class="col-auto">
-                      <div class="icon icon-shape bg-info text-white rounded-circle shadow">
-                        <i class="fas fa-percent"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
         @elseif(auth()->user()->role =='usuario')
         <!-- categoria -->
-        <div class="col-xl-3 col-lg-6">
-            <a class="nav-link " href="{{url('/categoria')}}">
-              <div class="card card-stats mb-4 mb-xl-0">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col">
-                      
-                    <h5 class="card-title text-uppercase text-muted mb-0">Categorias</h5>
-                    <span class="h2 font-weight-bold mb-0">1</span>  
-                  </div>
-                    <div class="col-auto">
-                      
-                      <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
-                        <i class="fas fa-sitemap"></i>
-                      <div>
-                        
-                      </div>
-                           
-                      </div>
-                      
-                    </div>
-                    
-                  </div>
-                 
-                  
-                </div>
-              </div>
-            </div>
+          <div class="col-xl-3 col-md-6 mb-4">
+                        <a class="nav-link " href="{{url('/categoria')}}">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                Categoria</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-sitemap"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
              <!-- productos -->
-             <div class="col-xl-3 col-lg-6">
-            <a class="nav-link " href="{{url('/producto')}}">
-              <div class="card card-stats mb-4 mb-xl-0">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0">Productos</h5>
-                      <span class="h2 font-weight-bold mb-0">50</span>
-                    </div>
-                    <div class="col-auto">
-                      <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
-                        <i class="fas fa-chart-pie"></i>
-                        
-                      </div>
-                    </div>
-                  </div>
-                  
-                
-                </div>
-              </div>
+             <div class="col-xl-3 col-md-6 mb-4">
+                        <a class="nav-link " href="{{url('/productos')}}">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                Productos</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-sitemap"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
             </div>
 
 

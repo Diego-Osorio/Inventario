@@ -2,17 +2,10 @@
               <div class=" dropdown-header noti-title">
                 <h6 class="text-overflow m-0">Bienvenidos!</h6>
               </div>
-              <a href="#" class="dropdown-item">
-                <i class="ni ni-single-02"></i>
-                <span>Mi Perfil</span>
-              </a>
+             
               <a href="#" class="dropdown-item">
                 <i class="ni ni-settings-gear-65"></i>
                 <span>Configuracion</span>
-              </a>
-              <a href="/inventario" class="dropdown-item">
-                <i class="ni ni-calendar-grid-58"></i>
-                <span>Inventario</span>
               </a>
               <a href="#" class="dropdown-item">
                 <i class="ni ni-support-16"></i>

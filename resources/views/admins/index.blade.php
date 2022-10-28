@@ -35,7 +35,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  @foreach($admins as $admin)
+                @foreach($admins as $admin)
                   <tr>
                     <th scope="row">
                       {{$admin->name}}

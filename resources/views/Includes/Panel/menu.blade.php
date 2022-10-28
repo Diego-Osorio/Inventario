@@ -1,15 +1,20 @@
 <h6 class="navbar-heading text-muted">Menu</h6>
 <ul class="navbar-nav">
             @if(auth()->user()->role =='admin')
-          <li class="nav-item  active ">
-            <a class="nav-link  active " href="{{url('/configuracion')}}">
-              <i class="fa fa-cog text-danger"></i> Configuracion
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link " href="{{url('/inventario')}}">
-              <i class="fas fa-cubes text-blue"></i> Inventario
-            </a>
+            <li class="nav-item dropdown">
+                    <a class="nav-link nav-link-icon" href="#" id="navbar-default_dropdown_1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-cubes text-blue"> </i>
+                        <span class="">Inventario</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-default_dropdown_1">
+                        <a class="dropdown-item" href="{{url('/inventario')}}"> Ir al Inventario</a>
+                        <a class="dropdown-item" href="#">Agregar Productos </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">listar Producto</a>
+                        <a class="dropdown-item" href="#">Modificar Productos</a>
+                        <a class="dropdown-item" href="#">Eliminar  Productos</a>
+                    </div>
+                </li>
           </li>
           <li class="nav-item">
             <a class="nav-link " href="{{url('/categorias')}}">
@@ -23,11 +28,11 @@
 
             @elseif(auth()->user()->role =='usuario')
            <li class="nav-item">
-            <a class="nav-link " href="{{url('/categoria')}}">
-              <i class="fas fa-sitemap text-orange"></i> Categorias
+            <a class="nav-link " href="{{url('categoria')}}">
+              <i class="fas fa-sitemap text-orange"></i> Categoria
             </a>
             <li class="nav-item">
-            <a class="nav-link " href="{{url('/producto')}}">
+            <a class="nav-link " href="{{url('producto')}}">
               <i class="fas fa-cubes text-blue"></i> Productos
             </a>
             

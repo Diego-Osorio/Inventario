@@ -6,7 +6,7 @@
             <div class="card-header border-0">
               <div class="row align-items-center">
                 <div class="col">
-                  <h3 class="mb-0">Categorias</h3>
+                  <h3 class="mb-0">Inventario</h3>
                 </div>
                 <div class="col text-right">
                   <a href="{{url('')}}" class="btn btn-sm btn-primary"></a>
@@ -25,37 +25,34 @@
               <table class="table align-items-center table-flush">
                 <thead class="thead-light">
                   <tr>
-                    <th scope="col">Nombre</th>
+                  
+                    <th scope="col">id</th>
+                    <th scope="col">Marca</th>
+                    <th scope="col">Nombre Producto</th>
+                    <th scope="col">Codigo</th>
                     <th scope="col">Descripcion</th>
-                    <th scope="col">opciones</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Stock</th>
+                    <th scope="col">Categoria</th>
+                    
+                    
+               
                     
                   </tr>
                 </thead>
                 <tbody>
-                  @foreach($categories as $categorias)
-                  <tr>
-                    <th scope="row">
-                      {{$categorias->name}}
-                    </th>
-                    <td>
-                      {{$categorias->descripcion}}
-                    </td>
-
-                    <td>
-                      {{$categorias->stock}}
-                    </td>
-                    <td>
-                      
-                      <form action="{{url('/categoria/'.$categorias->id) }}"method="POST">
-                        @csrf
-                        @method('DELETE')
-                      </form>
-                      
-                    </td>
-                  </tr>
+                  @foreach($days as $day)
+                  <th>{{ $day }}</th>
+                  <td>
+                  <label class="custom-toggle">
+                  <input type="checkbox" checked>
+                  <span class="custom-toggle-slider rounded-circle"></span>
+                  </label>
+                  </td>
+    
                   @endforeach
-                </tbody>
-              </table>
+        </tbody>
             </div>
-          </div>
+
+          
 @endsection

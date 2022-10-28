@@ -56,5 +56,6 @@
                   @endforeach
         </tbody>
             </div>
-          </div>
+
+          
 @endsection

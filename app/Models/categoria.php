@@ -13,5 +13,5 @@ class categoria extends Model
 	 */
 	function __construct() {
 	}
-	public $table ='categorias';
+	public $table ='categoria';
 }
