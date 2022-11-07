@@ -58,6 +58,10 @@ use Illuminate\Support\Str;
                     <label for="phone">Telefono </label>
                     <input type="text"name="phone" class="form-control" value="{{old('phone', $admin->phone)}}" >
                  </div>
+                 <div class="form-group">
+                    <label for="role">rol  </label>
+                    <input type="text"name="role" class="form-control" value="{{old('role', $admin->role)}}" >
+                 </div>
                  <button type="submit" class="btn btn-sm btn-primary ">Guardar Cambios</button>
                 </form>
                  </div>

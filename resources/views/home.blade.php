@@ -108,7 +108,7 @@
         @elseif(auth()->user()->role =='usuario')
         <!-- categoria -->
           <div class="col-xl-3 col-md-6 mb-4">
-                        <a class="nav-link " href="{{url('/categoria')}}">
+                        <a class="nav-link " href="{{url('/categorias')}}">
                             <div class="card border-left-primary shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">

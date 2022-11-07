@@ -8,12 +8,9 @@ use Illuminate\Http\Request;
 class InventarioController extends Controller
 {
    
-    public function edit(){
-     $days = [ 
-      
-          
-     ];
-        return view('inventarius.index',compact('days'));
+    public function index(){
+      $producto = inventario::all();
+      return view('inventarius.index',compact('producto'));
     }
 
 

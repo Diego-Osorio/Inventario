@@ -28,11 +28,11 @@
 
             @elseif(auth()->user()->role =='usuario')
            <li class="nav-item">
-            <a class="nav-link " href="{{url('categoria')}}">
+            <a class="nav-link " href="{{url('categorias')}}">
               <i class="fas fa-sitemap text-orange"></i> Categoria
             </a>
             <li class="nav-item">
-            <a class="nav-link " href="{{url('producto')}}">
+            <a class="nav-link " href="{{url('/producto')}}">
               <i class="fas fa-cubes text-blue"></i> Productos
             </a>
             

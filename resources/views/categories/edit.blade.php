@@ -29,16 +29,16 @@
 
               @endif
 
-                <form action="{{url('/categorias/'.$categorias->id )}}" method="POST">
+                <form action="{{url('/categorias/'.$categoria->id )}}" method="POST">
                     @csrf
                     @method('PUT')
                  <div class="form-group">
                     <label for="name">Nombre De Categoria</label>
-                    <input type="text"name="name" class="form-control" value="{{ old('name',$categorias->name )}}" required>
+                    <input type="text"name="name" class="form-control" value="{{ old('name',$categoria->name )}}" required>
                  </div>
                  <div class="form-group">
                     <label for="description">Descripcion</label>
-                    <input type="text"name="description" class="form-control" value="{{ old('description', $categorias->description )}}" >
+                    <input type="text"name="description" class="form-control" value="{{ old('description', $categoria->description )}}" >
                  </div>
                  <button type="submit" class="btn btn-sm btn-primary ">Guardar Categoria</button> 
                 </form>

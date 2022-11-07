@@ -12,7 +12,7 @@
                   <h3 class="mb-0">Inventario</h3>
                 </div>
                 <div class="col text-right">
-                  <a href="{{url('Inventarius/create')}}" class="btn btn-sm btn-primary">Agregar  Producto al Inventario</a>
+                  <a href="{{url('inventarius/create')}}" class="btn btn-sm btn-primary">Agregar  Producto al Inventario</a>
                 </div>
               </div>
             </div>
@@ -44,8 +44,8 @@
                   </tr>
                 </thead>
                 <tbody>
-                  @foreach($days as $day)
-                  <th>{{ $day }}</th>
+                  @foreach($producto as $inventario)
+                  <th>{{ $inventario }}</th>
                   <td>
                   <label class="custom-toggle">
                   <input type="checkbox" checked>

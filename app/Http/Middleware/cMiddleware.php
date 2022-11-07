@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class ProductoMiddleware
+class cMiddleware
 {
     /**
      * Handle an incoming request.
@@ -16,9 +16,6 @@ class ProductoMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if(auth()->user()->role == 'admin')
         return $next($request);
-
-        return redirect('/');
     }
 }

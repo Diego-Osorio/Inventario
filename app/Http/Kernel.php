@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Models\categoria;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -65,6 +66,7 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'admin' => \App\Http\Middleware\AdminMiddleware::class,
         'producto' => \App\Http\Middleware\ProductoMiddleware::class,
-        'categoria' => \App\Http\Middleware\categoriaMiddleware::class,
+        'usuario' => \App\Http\Middleware\usuarioMiddleware::class,
+        'categoria' =>\App\Http\Middleware\categoriaMiddleware::class,
     ];
 }

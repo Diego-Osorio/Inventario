@@ -10,8 +10,8 @@ class categoriaController extends Controller
 {
    
     public function index(){
-        $categori = categoria::all();
-        return view('categoria.index',compact('categori'));
+        $categories = categoria::all();
+        return view('categories.index',compact('categories'));
     }
 
 
