@@ -3,7 +3,7 @@
 @section('content')
 
           <div class="card shadow">
-            <div class="card-header border-0">
+            <div class="card-header  bg-gradient-success ">
               <div class="row align-items-center">
                 <div class="col">
                   <h3 class="mb-0">Usuarios</h3>
@@ -12,8 +12,8 @@
                   <a href="{{url('/usuario/create')}}" class="btn btn-sm btn-primary">Nuevo usuario</a>
                 </div>
               </div>
-            </div>
-            <div class="card-body">
+
+            <div class="card-body header bg-gradient-success ">
             @if(session('notification'))
                <div class="alert alert-success" role="alert">
                   {{ session('notification') }}
@@ -23,7 +23,7 @@
             <div class="table-responsive">
               <!-- Projects table -->
               <table class="table align-items-center table-flush">
-                <thead class="thead-light">
+                <thead class="thead-light bg-gradient-success">
                   <tr>
                     <th scope="col">Nombre</th>
                     <th scope="col">Correo</th>

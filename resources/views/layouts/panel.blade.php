@@ -124,7 +124,7 @@
     </nav>
     <!-- End Navbar -->
     <!-- Header -->
-    <div class="header bg-gradient-primary pb-8 pt-4 pt-md-6">
+    <div class="header bg-gradient-success pb-9 pt-9 pt-md-6">
           @yield('content')
               <!-- Projects table -->
             
@@ -137,6 +137,9 @@
   <!--   Optional JS   -->
   <script src="{{asset('js/plugins/chart.js/dist/Chart.min.js')}}"></script>
   <script src="{{asset('js/plugins/chart.js/dist/Chart.extension.js')}}"></script>
+  <script src="{{asset('js/imput.js')}}"></script>
+  <script src="{{asset('js/salida.js')}}"></script>
+
   <!--   Argon JS   -->
   <script src="{{asset('js/argon-dashboard.min.js?v=1.1.2')}}"></script>
   <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>

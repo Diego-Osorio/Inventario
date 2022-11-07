@@ -10,8 +10,6 @@ class ProductoController extends Controller
    
     public function index()
     {
-        $producto = Producto::ordenBy('created_at')->get();
-   
-        return view('productos.idex',compact('producto'));
+   //
     }
 }

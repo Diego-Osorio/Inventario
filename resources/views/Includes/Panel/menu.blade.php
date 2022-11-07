@@ -8,18 +8,42 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-default_dropdown_1">
                         <a class="dropdown-item" href="{{url('/inventario')}}"> Ir al Inventario</a>
-                        <a class="dropdown-item" href="#">Agregar Productos </a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">listar Producto</a>
-                        <a class="dropdown-item" href="#">Modificar Productos</a>
-                        <a class="dropdown-item" href="#">Eliminar  Productos</a>
+                        <a class="dropdown-item" href="{{url('/ingreso')}}">listar Producto</a>
+                        <a class="dropdown-item" href="{{url('/ingreso')}}">Modificar Productos</a>
+                        <a class="dropdown-item" href="{{url('/ingreso')}}">Eliminar  Productos</a>
                     </div>
                 </li>
           </li>
+          <li class="nav-item dropdown">
+                    <a class="nav-link nav-link-icon" href="#" id="navbar-default_dropdown_1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="		fas fa-angle-double-right"> </i>
+                        <span class="">Ingreso</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-default_dropdown_1">
+                        <a class="dropdown-item" href="{{url('/ingreso')}}">Registrar nuevo Ingreso</a>
+                        <a class="dropdown-item" href="">Anular Ingreso</a>
+                    </div>
+                </li>
+          </li>
+
+          <li class="nav-item dropdown">
+                    <a class="nav-link nav-link-icon" href="#" id="navbar-default_dropdown_1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="	fas fa-angle-double-left"> </i>
+                        <span class="">Salida</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-default_dropdown_1">
+                        <a class="dropdown-item" href="{{url('/salida')}}">Registrar nuevo Salida</a>
+                        <a class="dropdown-item" href="">Anular salida</a>
+                    </div>
+                </li>
+          </li>
+
+    
           <li class="nav-item">
             <a class="nav-link " href="{{url('/categorias')}}">
               <i class="fas fa-sitemap text-orange"></i> Categorias
             </a>
+            
           </li>
           <li class="nav-item">
             <a class="nav-link " href="/usuario">
