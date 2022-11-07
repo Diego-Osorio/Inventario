@@ -55,17 +55,17 @@ use js\plugins\imput;
      </div>
    </div>
 </form>
-                    <form class="row"
-                     <div class="btn-group" role="group" aria label="">
+                    <form class="row">
+                    
+                    <div class="btn-group" role="group" aria label="">
                             <div id="main">
                               <div class="form-group">
-                    <imput type="buttom" id="btAdd" value="Agregar Producto" class ="btn btn-primary float">Añadir Producto</imput>
-                  
+                    <imput type="buttom1" id="btAdd1" value="Agregar Producto" class ="btn btn-primary float">Añadir Producto</imput>
+                    
                     <input type="button" id="btRemove" value="Eliminar" class="btn btn-primary float">
                     <input type="button" id="btRemoveAll" value="Eliminar Todo" class="btn btn-primary float-rigth" /><br />
     
                      </div>
- 
                     <div id="view_uploading_img" class="col-md-12 d-none">
                                     <div class="col-md-2"></div>
                                     <div class="col-md-10">
@@ -77,9 +77,6 @@ use js\plugins\imput;
                          <!-- end col-md-3 -->
                         
                  </div>
-</form>
-                      
-            </div>
         </div>
         <form action="{{url('/inventario')}}" method="POST">
                     @csrf

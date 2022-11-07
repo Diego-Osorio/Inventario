@@ -41,24 +41,36 @@ use js\plugins\salida;
                   <div class="card-body">
       
 
-                  <div class="row">
-                        <div class="col-md-4 col-sm-6">
-                           <div class="form-group">
-                            <label for="example-date-input" class="form-control-label">Fecha</label>
-                           <input class="form-control" type="date" value="" id="example-date-input">
-                    </div>
-
-                  <div class="form-group ">
-                                <label class="control-label clear"> N° de documento </label>
-                                <input class="form-control" name="numer" type="text" value="">
-                    </div>
-                    <label for="example-date-input" class="form-control-label">Descripcion</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                        <label for="example-date-input" class="form-control-label">Cantidad</label>
-                        <input class="form-control" type="number" value="0" id="example-number-input"></imput>
-                    
-                     </div>
-                        </div>
+                  <form class="container">
+             <div class="row">
+     <div class="col-md-3 col-sm-12">
+         <div class="form-group">
+            <label for="fecha">Fecha</label>
+            <input type="date" class="form-control" id="fecha" placeholder="Fecha">
+         </div>
+     </div>
+     <div class="col-md-3 col-sm-12">
+       <div class="form-group">
+         <label for="num_documento">Numero de Documento</label>
+         <input type="text" class="form-control" id="num_documento" placeholder="Numero de Documento"/>
+       </div>
+     </div>
+     <div class="col-md-3 col-sm-12">
+       <div class="form-group">
+         <label for="tipo_documento">Tipo de Documento</label>
+         <select type="date" class="form-control" id="tipo_documento" placeholder="Tipo de Documento">
+           <option value="factura">FACTURA</option>
+           <option value="boleta">BOLETA</option>
+         </select>
+       </div>
+     </div>
+     <div class="col-md-3 col-sm-12">
+     <div class="form-group">
+    <label for="exampleFormControlTextarea1">Example textarea</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+  </div>
+   </div>
+</form>
                         
                         <!-- end col-md-3 -->
                               <span class="select2-selection__arrow" role="presentation"><b role="presentation"></b>
