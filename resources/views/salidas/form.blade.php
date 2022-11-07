@@ -1,6 +1,6 @@
 <?php
 use Illuminate\Support\Str;
-use js\plugins\imput;
+use js\plugins\salida;
 ?>
 
 @extends('layouts.panel')
@@ -11,7 +11,7 @@ use js\plugins\imput;
             <div class="card-header border-0">
               <div class="row align-items-center">
                 <div class="col">
-                  <h3 class="mb-0"> Nuevo ingreso</h3>
+                  <h3 class="mb-0"> Salida</h3>
 </div>
               </div>
             </div>
@@ -63,12 +63,14 @@ use js\plugins\imput;
                         <!-- end col-md-3 -->
                               <span class="select2-selection__arrow" role="presentation"><b role="presentation"></b>
                            </span>
-</div>
-</div>
+                      </div>
+                     </div>
 
-</div>
-
+                       </div>
+ 
                            <div class="btn-group" role="group" aria label="">
+                            <div id="main">
+                              <div class="form-group">
                     <imput type="buttom1" id="btAdd1" value="Agregar Producto" class ="btn btn-primary float">Añadir Producto</imput>
                     
                     <input type="button" id="btRemove" value="Eliminar" class="btn btn-primary float">
@@ -102,10 +104,9 @@ use js\plugins\imput;
                             </div>
                         </div> 
                          <!-- end col-md-3 -->
-                        
+                  
                  </div>
-          </div>
-          <form action="{{url('/inventario')}}" method="POST">
+                 <form action="{{url('/inventario')}}" method="POST">
                     @csrf
                  <button type="btSubmit" class="btn btn-sm btn-primary ">Ingresar</button>
                  
@@ -113,7 +114,10 @@ use js\plugins\imput;
                   <i class="fas fa-angle-left"></i>  
                   
                   Regresar</a>
-                </form>     
+                </form>  
+          </div>
+</div>
+        
             </div>
         </div>
         

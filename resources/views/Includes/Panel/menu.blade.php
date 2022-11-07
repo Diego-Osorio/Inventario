@@ -9,8 +9,8 @@
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-default_dropdown_1">
                         <a class="dropdown-item" href="{{url('/inventario')}}"> Ir al Inventario</a>
                         <a class="dropdown-item" href="{{url('/ingreso')}}">listar Producto</a>
-                        <a class="dropdown-item" href="{{url('/ingreso')}}">Modificar Productos</a>
-                        <a class="dropdown-item" href="{{url('/ingreso')}}">Eliminar  Productos</a>
+                        <a class="dropdown-item" href="{{url('/salida')}}">Modificar Productos</a>
+                        <a class="dropdown-item" href="{{url('/salida')}}">Eliminar  Productos</a>
                     </div>
                 </li>
           </li>

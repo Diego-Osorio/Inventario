@@ -19,12 +19,12 @@ $(document).ready(function() {
                 // Añadir caja de texto.
                 $(container).append(''+ '' +
                 ' ' + iCnt  );
-                $(container).append('<div class="col"><div class="col-md-6"><div class="form-group"><label>Nombre Ingreso</label><input type="id_ingreso" name="name" id="id_ingreso" '+ +  + 'select ' +
-                'value=" ' + iCnt + '" /></div></div></div>');
-                $(container).append('<div class="col"><div class="col-md-6"><div class="form-group"><label>Nombre Producto</label><input type="id_producto" name="name" id="id_producto" ' +  + 'select ' +
-                'value=" ' + iCnt + '" /></div></div></div>');
-                $(container).append('<div class="col"><div class="col-md-6"><div class="form-group"><label>Cantidad</label><input type="numer" name="numer" id="cantidad" ' +  + 'select ' +
-                'value=" ' + iCnt + '" /></div></div></div>');
+                $(container).append('<div class="col"><div class="col-md-3 col-sm-12"><div class="form-group"> <label for="num_documento">Numero de Documento</label><input type="text" class="form-control" id="num_documento" placeholder="Numero de Documento"> '+ +  + 'select ' +
+                'value=" ' + iCnt + '" />');
+                $(container).append('<div class="col-md-3 col-sm-12><div class="form-group"><label for="num_documento">Numero de Documento</label><input type="text" class="form-control" id="num_documento" placeholder="Numero de Documento" ' +  + 'select ' +
+                'value=" ' + iCnt + '" /></div></div>');
+                $(container).append('<div class="col-md-3 col-sm-12"><div class="form-group"><label for="tipo_documento">Tipo de Documento</label><select type="date" class="form-control" id="tipo_documento" placeholder="Tipo de Documento"> <option value="factura">FACTURA</option><option value="boleta">BOLETA</option> ' +  + 'select ' +
+                'value=" ' + iCnt + '" /></select></div></div></div></div>');
 
 
 

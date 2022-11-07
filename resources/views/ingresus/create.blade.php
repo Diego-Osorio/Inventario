@@ -30,65 +30,37 @@ use js\plugins\imput;
 
                 <form action="{{url('/ingreso')}}" method="POST">
                     @csrf
-
-    <div class="row">
-        <div class="col-md-12">
-        <div class="card-header">   
-       
-    
-            <div class="card card-default">
-                  <div class="card-body">
-      
-               
-
-                    <div class="row">
-                        <div class="col-md-4 col-sm-6">
-                           <div class="form-group">
-                            <label for="example-date-input" class="form-control-label">Fecha</label>
-                           <input class="form-control" type="date" value="" id="example-date-input">
-                    </div>
-                     </div>
-                        </div>
-                        
-                        <!-- end col-md-3 -->
-                        <div class="col-md-4 col-sm-6">
-
-                        <div class="form-group ">
-                                <label class="control-label clear"> Tipo de Documento </label>
-                                <select id="category_id" class="form-control select2 select2-hidden-accessible" name="category_id" data-select2-id="category_id" tabindex="-1" aria-hidden="true"><option value="0" data-select2-id="2">Selecciona tipo de documento</option>
-                                <option value="3">Factura</option>
-                                <option value="4">Boleta</option>
-                               
-                              </select>
-                            
-                              <span class="select2-selection__arrow" role="presentation"><b role="presentation"></b>
-                           </span>
-                        </span>
-                     </span>
-                     <span class="dropdown-wrapper" aria-hidden="true">
-                     </span>
-                  </span>
-                           </div>
-                           
-                        <div class="form-group ">
-                                <label class="control-label clear"> N° de documento </label>
-                                <input class="form-control" name="numer" type="text" value="">
-                    </div>
-                                                      
-                           
-                          
-                
-                        </div>
-                        <div class="col-md-4 col-sm-6">
-
-                                                            
-                            
-                     </div>
-                     <div id="main">
-                     <div class="form-group">
-                    <div class="btn-group" role="group" aria label="">
+                    <form class="container">
+             <div class="row">
+     <div class="col-md-3 col-sm-12">
+         <div class="form-group">
+            <label for="fecha">Fecha</label>
+            <input type="date" class="form-control" id="fecha" placeholder="Fecha">
+         </div>
+     </div>
+     <div class="col-md-3 col-sm-12">
+       <div class="form-group">
+         <label for="num_documento">Numero de Documento</label>
+         <input type="text" class="form-control" id="num_documento" placeholder="Numero de Documento"/>
+       </div>
+     </div>
+     <div class="col-md-3 col-sm-12">
+       <div class="form-group">
+         <label for="tipo_documento">Tipo de Documento</label>
+         <select type="date" class="form-control" id="tipo_documento" placeholder="Tipo de Documento">
+           <option value="factura">FACTURA</option>
+           <option value="boleta">BOLETA</option>
+         </select>
+       </div>
+     </div>
+   </div>
+</form>
+                    <form class="row"
+                     <div class="btn-group" role="group" aria label="">
+                            <div id="main">
+                              <div class="form-group">
                     <imput type="buttom" id="btAdd" value="Agregar Producto" class ="btn btn-primary float">Añadir Producto</imput>
-                    
+                  
                     <input type="button" id="btRemove" value="Eliminar" class="btn btn-primary float">
                     <input type="button" id="btRemoveAll" value="Eliminar Todo" class="btn btn-primary float-rigth" /><br />
     
@@ -105,7 +77,7 @@ use js\plugins\imput;
                          <!-- end col-md-3 -->
                         
                  </div>
-          </div>
+</form>
                       
             </div>
         </div>
