@@ -1,82 +1,182 @@
 <?php
 use Illuminate\Support\Str;
-use js\plugins\imput;
 ?>
 
 @extends('layouts.panel')
-
 @section('content')
-
-          <div class="card shadow">
-            <div class="card-header border-0">
-              <div class="row align-items-center">
-                <div class="col">
-                  <h3 class="mb-0"> Nuevo ingreso</h3>
-                </div>
-              </div>
+<div class="card shadow">
+    <div class="card-header border-0">
+        <div class="row align-items-center">
+            <div class="col">
+                <h3 class="mb-0"> Nuevo ingreso</h3>
             </div>
-            <div class="card-body">
-
-               @if ($errors->any())
-                  @foreach ($errors->all() as $errors) 
-                   <div class="alert alert-danger" role="alert">
-                    
-                    <i class="	fas fa-exclamation-triangle"></i>
-                        <strong>Por Favor!!</strong> {{ $errors }}
-                   </div>
-                @endforeach
-
-              @endif
-
-                <form action="{{url('/ingreso')}}" method="POST">
-                    @csrf
-                    <form class="container">
-                    <div class="row">
-                   <div class="col-md-3 col-sm-12">
+        </div>
+    </div>
+    <div class="card-body">
+        @if ($errors->any())
+            @foreach ($errors->all() as $errors) 
+                <div class="alert alert-danger" role="alert">
+                     <i class="	fas fa-exclamation-triangle"></i>
+                    <strong>Por Favor!!</strong> {{ $errors }}
+                </div>
+            @endforeach
+        @endif
+        <form action="{{url('/ingreso')}}" method="POST">
+            @csrf            
+            <div class="row">
+                <div class="col-md-4 col-sm-12">
                     <div class="form-group">
-                     <label for="fecha">Fecha</label>
-                     <input type="date" name="fecha" class="form-control" value="{{old('date')}}" id="fecha" placeholder="Fecha" required>
-                   </div>
-                   </div>
-                   <div class="col-md-3 col-sm-12">
-                    <div class="form-group">
-                     <label for="num_documento">Numero de Documento</label>
-                     <input type="text" name="ndocumento"class="form-control" value="{{old('ndocumento')}}" id="num_documento" placeholder="Numero de Documento" required>
+                        <label for="fecha">Fecha</label>
+                        <input type="date" class="form-control" id="fecha" placeholder="Fecha" name="fecha" value="{{old('fecha') }}" >
                     </div>
-                  </div>
-                  <div class="col-md-3 col-sm-12">
+                </div>
+                <div class="col-md-4 col-sm-12">
                     <div class="form-group">
-                      <label for="tipo_documento">Tipo de Documento</label>
-                      <select type="date" name="tipo_documento" class="form-control" value="{{old('tipo_documento')}}"id="tipo_documento" placeholder="Tipo de Documento" required>
-                         <option value="factura">FACTURA</option>
-                         <option value="boleta">BOLETA</option>
+                        <label for="num_documento">Numero de Documento</label>
+                        <input type="text" class="form-control" id="ndocumento" name="ndocumento" placeholder="Numero de Documento"value="{{old('ndocumento')}}">
+                    </div>
+                </div>
+                <div class="col-md-4  col-sm-12">
+                    <div class="form-group">
+                      <label for="tipodocumento">Tipo de Documento</label>
+                      <select type="select" class="form-control" id="tipodocumento" name="tipodocumento" placeholder="tipodocumento" value="{{old('tipodocumento')}}" >
+                        <option value="#">Seleciona </option>
+                         <option value="FACTURA">FACTURA</option>
+                        <option value="BOLETA">BOLETA</option>
                       </select>
                     </div>
-                    </div>
-                    </div>
-                </form>
-                  <div class="btn-group" role="group" aria label="">
-                  <div id="main">
-                          <div class="form-group">
-                             <imput type="buttom" id="btAdd" value="Agregar Producto" class ="btn btn-primary float">Añadir Producto</imput>
-                             <input type="button" id="btRemove" value="Eliminar" class="btn btn-primary float">
-                            <input type="button" id="btRemoveAll" value="Eliminar Todo" class="btn btn-primary float-rigth" /><br />  
-                          </div>
-                        </div>
-                       </div>
-                      </div>
-                    </div>
-                   <form action="{{url('/inventario')}}" method="POST">
-                    @csrf
-                        <button type="btSubmit" class="btn btn-sm btn-primary ">Ingresar</button>
-                           <a href="{{url('/inventario')}}" class="btn btn-sm btn-success">
-                           <i class="fas fa-angle-left"></i>  
-                              Regresar</a>
-                    </form>
-                   </div>
-                  </div>
                 </div>
-              </div>
+                <div class="col-md-3 col-sm-12">
+                    <div class="form-group">
+                        <label for="codigo">codigo producto</label>
+                        <input type="text" name="codigo" id="codigo" class="form-control" placeholder="codigo">
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-12">
+                    <div class="form-group">
+                        <label for="nombre">Nombre producto</label>
+                        <input type="text" name="producto" id="producto" class="form-control" placeholder="nombre">
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-12">
+                    <div class="form-group">
+                        <label for="idcategoria">categorias</label>
+                        <select name="idcategoria" id="idcategoria" class="form-control">
+                            @foreach($categorias as $categoria)
+                            <option value="{{$categoria->id}}"> {{$categoria->name}}</option>
+                            @endforeach
+                            </select>
+                    </div>
+               </div>
+               <div class="col-md-3 col-sm-12">
+                    <div class="form-group">
+                        <label for="idcategoria">marca</label>
+                        <select name="idmarca" id="idmarca" class="form-control">
+                            @foreach($marcas as $marca)
+                            <option value="{{$marca->id}}"> {{$marca->nombre}}</option>
+                            @endforeach
+                            </select>
+                    </div>
+               </div>
+                <div class="col-md-3 col-sm-12">
+                    <div class="form-group">
+                        <label for="cantidad">cantidad</label>
+                        <input type="number" name="cantidad" id="cantidad" class="form-control" placeholder="cantidad">
+                    </div>              
+                </div>
+                <div class="col-md-3 col-sm-12">
+                  <div class="form-group">
+                    <button type="button" name="bt_add" id="bt_add" class="btn btn-primary">Agregar</button>
+                 </div>
+                </div>
+                <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 m-3">
+                    <table id="detalles"class="table table-striped table-bordered table-condensed table-hover">
+                        <thead style="background-color:#825ee4">
+                            <th >opciones</th>
+                            <th >Nombre</th>
+                            <th >marca</th>
+                            <th >categorias</th>
+                            <th >Codigo</th>
+                            <th >cantidad</th>
+
+                         </thead> 
+                        <tfoot>
+                          <th ></th>
+                          <th ></th>
+                          <th ></th>
+                          <th ></th> 
+                          <th ></th>
+                          <th ></th>
+                      </tfoot>
+                    </table>
+                </div>
+               <div class="form-group">
+                        <input name="_token" value="{{csrf_token() }}" type="hidden"></input>
+                </div>
+                <div class="col-md-6 col-xs-12 col-sm-12">
+                    <button type="submit" class="btn btn-block btn-primary">Ingresar </button>
+                </div>
+                <div class="col-md-6 col-xs-12 col-sm-12">
+                    <a href="{{url('/ingreso')}}" class="btn btn-success btn-block">
+                        <i class="fas fa-angle-left"></i>Regresar
+                    </a>
+                </div>
+            </div>
+        </form>  
+    </div>
+</div>  
+@push('script')
+<script src="{{asset('js/plugins/jquery/dist/jquery.min.js')}}"></script>
+<script>
+$(document).ready(function() {
+    $('#bt_add').click(function(){
+       agregar();
+    });
+  });
+  
+  var cont=0;
+  total=0;
+  
+  $("#guardar").show();
+  
+  function agregar() 
+  {
+    codigo = $("#codigo").val();
+    producto = $("#producto").val();
+    cantidad = $("#cantidad").val();
+    idcategoria = $("#idcategoria").val();
+    idmarca = $("#idmarca").val();
+  
+    if(codigo!="" && producto!="" && cantidad!="" && cantidad>0) 
+    {
+     
+  
+      var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><input type="hidden" name="producto[]" value="'+producto+'">'+producto+' <input type="hidden" name="idmarca[]" value="'+idmarca+'">'+idmarca+' <input type="hidden" name="idcategoria[]" value="'+idcategoria+'">'+producto+'</td><td><input type="hidden" name="codigo[]" value="'+codigo+'">'+codigo+'</td><td><input type="number" name="cantidad[]" class="form-control" value="'+cantidad+'"></td></tr>';
+       cont++;
+       limpiar();
+       $('#detalles').append(fila);
+    }
+      else
+    {
+     alert("Error al ingresar el detalle de ingreso, revise los datos del articulo");
+     }
+  }
+  
+  
+  function limpiar(){
+    $("#producto").val("");
+    $("#codigo").val("");
+    $("#cantidad").val("");
+  }
+  
+  
+  function eliminar(index){
+  $("#fila"+ index).remove();
+  
+  
+  }
+
+    </script>
+
+@endpush
 @endsection
-
-

@@ -1,8 +1,6 @@
 <?php
 
 namespace App\Http;
-
-use App\Models\categoria;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -66,7 +64,7 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'admin' => \App\Http\Middleware\AdminMiddleware::class,
         'producto' => \App\Http\Middleware\ProductoMiddleware::class,
-        'usuario' => \App\Http\Middleware\usuarioMiddleware::class,
-        'categoria' =>\App\Http\Middleware\categoriaMiddleware::class,
+        'categorias' => \App\Http\Middleware\categoriaMiddleware::class,
+        'usuarios'=> \App\Http\Middleware\UsuariosMiddleware::class,
     ];
 }

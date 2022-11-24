@@ -1,19 +1,20 @@
 @extends('layouts.panel')
 
 @section('content')
-
+@switch(true)
+@case(auth()->user()->role =='admin')
           <div class="card shadow">
-            <div class="card-header  bg-gradient">
+            <div class="card-header border-0">
               <div class="row align-items-center">
                 <div class="col">
-                  <h3 class="mb-0">Usuarios</h3>
+                  <h3 class="mb-0">Marca</h3>
                 </div>
                 <div class="col text-right">
-                  <a href="{{url('/usuario/create')}}" class="btn btn-sm btn-primary">Nuevo usuario</a>
+                  <a href="{{url('/marca/create')}}" class="btn btn-sm btn-primary">Nueva Marca</a>
                 </div>
               </div>
-
-            <div class="card-body header bg-gradient ">
+            </div>
+            <div class="card-body">
             @if(session('notification'))
                <div class="alert alert-success" role="alert">
                   {{ session('notification') }}
@@ -23,48 +24,43 @@
             <div class="table-responsive">
               <!-- Projects table -->
               <table class="table align-items-center table-flush">
-                <thead class="thead-light bg-gradient-primary">
+                <thead class="thead-light">
                   <tr>
                     <th scope="col">Nombre</th>
-                    <th scope="col">Correo</th>
-                    <th scope="col">Role</th>
-                    <th scope="col">Opciones</th>
-                    
-
+                    <th scope="col">Descripcion</th>
+                    <th scope="col">opciones</th>
                     
                   </tr>
                 </thead>
                 <tbody>
-                @foreach($admins as $admin)
+                  @foreach($marcas as $marcas)
                   <tr>
                     <th scope="row">
-                      {{$admin->name}}
+                      {{$marcas->nombre}}
                     </th>
                     <td>
-                      {{$admin->email}}
+                      {{$marcas->descripcion}}
                     </td>
-                    <td>
-                      {{$admin->role}}
-                    </td>
-                    
                     <td>
                       
-                      <form action="{{url('/usuario/'.$admin->id) }}"method="POST">
+                      <form action="{{url('/marca/'.$marcas->id) }}"method="POST">
                         @csrf
                         @method('DELETE')
-                        <a href="{{ url('/usuario/'.$admin->id.'/edit') }}"class="btn btn-sm btn-primary">Editar</a>
+                        <a href="{{ url('/marca/'.$marcas->id.'/edit') }}"class="btn btn-sm btn-primary">Editar</a>
                         <button type="submit" class="btn btn-sm btn-danger">Eliminar </button>
 
                       </form>
                       
                     </td>
+                    
                   </tr>
                   @endforeach
+                  
                 </tbody>
               </table>
             </div>
-            <div class="card-body">
-             {{$admins->links()}}
-            </div>
           </div>
+        </div>
+        @break
+          @endswitch
 @endsection

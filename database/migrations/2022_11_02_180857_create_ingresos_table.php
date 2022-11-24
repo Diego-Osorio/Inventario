@@ -16,8 +16,11 @@ class CreateIngresosTable extends Migration
         Schema::create('ingresos', function (Blueprint $table) {
             $table->id();
             $table->date('Fecha');
-            $table->integer('tipodocumento');
-            $table->integer('ndocumento');
+            $table->string('tipodocumento');
+            $table->string('ndocumento');
+            $table->string('codigoproducto');
+            $table->string('nombreproducto');
+            $table->string('cantidad')->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +32,6 @@ class CreateIngresosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ingresos');
+        Schema::dropIfExists('inventario');
     }
 }

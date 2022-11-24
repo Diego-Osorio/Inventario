@@ -2,13 +2,13 @@
 <ul class="navbar-nav">
             @if(auth()->user()->role =='admin')
             <li class="nav-item dropdown">
-                    <a class="nav-link nav-link-icon" href="#" id="navbar-default_dropdown_1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link nav-link-icon" href="{{url('/home')}}" id="navbar-default_dropdown_1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-cubes text-blue"> </i>
                         <span class="">Inventario</span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-default_dropdown_1">
-                        <a class="dropdown-item" href="{{url('/inventario')}}"> Ir al Inventario</a>
-                        <a class="dropdown-item" href="{{url('/ingreso')}}">listar Producto</a>
+                        <a class="dropdown-item" href="{{url('/ingreso')}}"> Ir al Inventario</a>
+                        <a class="dropdown-item" href="{{url('/ingreso/create')}}">listar Producto</a>
                         <a class="dropdown-item" href="{{url('/salida')}}">Modificar Productos</a>
                         <a class="dropdown-item" href="{{url('/salida')}}">Eliminar  Productos</a>
                     </div>
@@ -20,8 +20,7 @@
                         <span class="">Ingreso</span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-default_dropdown_1">
-                        <a class="dropdown-item" href="{{url('/ingreso')}}">Registrar nuevo Ingreso</a>
-                        <a class="dropdown-item" href="">Anular Ingreso</a>
+                        <a class="dropdown-item" href="{{url('/ingreso/create')}}">Registrar nuevo Ingreso</a>
                     </div>
                 </li>
           </li>
@@ -39,11 +38,16 @@
           </li>
 
     
-          <li class="nav-item">
-            <a class="nav-link " href="{{url('/categorias')}}">
-              <i class="fas fa-sitemap text-orange"></i> Categorias
-            </a>
-            
+          <li class="nav-item dropdown">
+                    <a class="nav-link nav-link-icon" href="#" id="navbar-default_dropdown_1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="	fas fa-sitemap text-orange"> </i>
+                        <span class="">Categoria/Marca</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-default_dropdown_1">
+                        <a class="dropdown-item" href="{{url('/categorias')}}">categoria</a>
+                        <a class="dropdown-item" href="{{url('/marca')}}">marca</a>
+                    </div>
+                </li>
           </li>
           <li class="nav-item">
             <a class="nav-link " href="/usuario">
@@ -56,7 +60,7 @@
               <i class="fas fa-sitemap text-orange"></i> Categoria
             </a>
             <li class="nav-item">
-            <a class="nav-link " href="{{url('/producto')}}">
+            <a class="nav-link " href="{{url('/ingreso')}}">
               <i class="fas fa-cubes text-blue"></i> Productos
             </a>
             

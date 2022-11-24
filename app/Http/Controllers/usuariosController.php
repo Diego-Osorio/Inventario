@@ -1,21 +1,17 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\User;
 use App\Models\users;
-use App\Http\Controllers\Controller;
-use Symfony\Component\Mime\Email;
+use Illuminate\Http\Request;
 
-class AdminController extends Controller
+class usuariosController extends Controller
 {
-    
     public function index()
     {
-        $admins = User::paginate(10);
+        $usuario = users::paginate(10);
         
-        return view('admins.index', compact('admins'));
+        return view('admins.index', compact('usuario'));
     }
 
     

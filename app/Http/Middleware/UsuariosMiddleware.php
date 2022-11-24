@@ -1,11 +1,10 @@
 <?php
 
 namespace App\Http\Middleware;
-
 use Closure;
 use Illuminate\Http\Request;
 
-class usuarioMiddleware
+class UsuariosMiddleware
 {
     /**
      * Handle an incoming request.
@@ -16,9 +15,10 @@ class usuarioMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if(auth()->user()->role == 'usuario')
+        
+        if(auth()->user()->role == 'usuarios')
         return $next($request);
 
         return redirect('/');
-}
+    }
 }

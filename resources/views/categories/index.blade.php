@@ -47,7 +47,7 @@
                         @csrf
                         @method('DELETE')
                         <a href="{{ url('/categorias/'.$categorias->id.'/edit') }}"class="btn btn-sm btn-primary">Editar</a>
-                        <button type="submit" class="btn btn-sm btn-danger">Eliminar </button>
+                        <button type="submit" class="btn btn-sm btn-danger">Anular </button>
 
                       </form>
                       
@@ -69,11 +69,7 @@
                 <div class="col">
                   <h3 class="mb-0">Categorias</h3>
                 </div>
-                <div class="col text-right">
-                  <a href="{{url('/categorias/create')}}" class="btn btn-sm btn-primary">Nueva Categoria</a>
-                </div>
-              </div>
-            </div>
+               
             <div class="card-body">
             @if(session('notification'))
                <div class="alert alert-success" role="alert">
@@ -102,9 +98,6 @@
                       {{$categorias->descripcion}}
                     </td>
                     <td>
-                      
-
-                      
                     </td>
                     
                   </tr>

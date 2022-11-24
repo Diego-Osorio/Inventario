@@ -1,19 +1,16 @@
 <?php
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Producto extends Model
+class ingreso extends Model
 {
-    protected $fillable = [
-   'id',
-   'nombre',
-   'descripcion',
-   'marca_id',
-   'categoria_id',
-   'codigo',
-    ];
+    use HasFactory;
+    function __construct() {
+    }
+    public $table ='ingreso';
     public $timestamps = false;
     
 }

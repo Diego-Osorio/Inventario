@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\categoria;
+use App\Models\ingreso;
+use App\Models\inventario;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +27,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $categorias=Categoria::count();
+        $usuarios=User::count();
+        $ingresos =ingreso::count();
+        return view('home',['categorias'=>$categorias,'usuarios'=>$usuarios,'ingreso'=>$ingresos]);
     }
 }

@@ -9,8 +9,8 @@ class InventarioController extends Controller
 {
    
     public function index(){
-      $producto = inventario::all();
-      return view('inventarius.index',compact('producto'));
+      $ingreso = inventario::all();
+      return view('ingresus.index',compact('ingreso'));
     }
 
 
