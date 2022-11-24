@@ -34,15 +34,27 @@
                     <th scope="col">Stock</th>
                     <th scope="col">Categoria</th>
                     <th scope="col">Info</th>
-                    
-                    
-               
-                    
                   </tr>
                 </thead>
                 <tbody>
-                  @foreach($producto as $inventario)
-                  <th>{{ $inventario }}</th>
+                  @foreach($producto as $$ingreso)
+                  <tr>
+                    <th scope="row">
+                      {{$ingreso->Marca}}
+                    </th>
+                    <th scope="row">
+                      {{$ingreso->NombreProducto}}
+                    </th>
+                    <th scope="row">
+                      {{$ingreso->Estado}}
+                    </th>
+                    <th scope="row">
+                      {{$ingreso->Stock}}
+                    </th>
+                    <th scope="row">
+                      {{$ingreso->categoria}}
+                    </th>
+                    <td>
                   <td>
                   <label class="custom-toggle">
                   <input type="checkbox" checked>
@@ -70,17 +82,17 @@
                 
                         <tbody>
                                                     <tr>
-                                <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">1</font></font></td>
-                                <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">cascos </font></font></td>
-                                <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cascos </font></font></td>
-                                <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">xdcfr</font></font></td>
-                                <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cascos de seguridad </font></font></td>
-                                <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Disponible</font></font></td>
-                                <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">20</font></font></td>
-                                <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Seguridad</font></font></td>
+                                <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"></font></font></td>
+                                <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"></font></font></td>
+                                <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> </font></font></td>
+                                <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"></font></font></td>
+                                <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> </font></font></td>
+                                <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"></font></font></td>
+                                <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"></font></font></td>
+                                <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"></font></font></td>
                                 <td class="noPrint text-center">
                                     <div class="btn-group">
-                                        <a href="http://posshop.bitspecksolutions.com/user/purchase/1651339158" class="btn btn-sm btn-info"><i class="fa fa-info-circle"> </i> </a>
+                                        <a href="#" class="btn btn-sm btn-info"><i class="fa fa-info-circle"> </i> </a>
                                                                           </div>
                                 </td>
                             </tr>

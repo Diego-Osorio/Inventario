@@ -27,10 +27,12 @@ Route::get('/inventario', [App\Http\Controllers\Admin\InventarioController::clas
 Route::get('/inventario/create', [App\Http\Controllers\Admin\InventarioController::class, 'create']);
 /* Creando una ruta para el método create en el ingresoController. */
 Route::get('/ingreso', [App\Http\Controllers\admin\ingresoController::class, 'create']);
-Route::post('/ingreso', [App\Http\Controllers\admin\ingresoController::class, 'sendData']);
+Route::post('/ingreso', [App\Http\Controllers\Admin\ingresoController::class, 'sendData']);
 Route::get('/ingreso/{ingreso}/edit', [App\Http\Controllers\admin\ingresoController::class, 'edit']);
 Route::put('/ingreso/{ingreso}', [App\Http\Controllers\admin\ingresoController::class, 'update']);
 Route::delete('/ingreso/{ingreso}', [App\Http\Controllers\admin\ingresoController::class, 'destroy']);
+//salida
+/* Creando una ruta para el controlador de salida. */
 Route::get('/salida', [App\Http\Controllers\admin\salidaController::class, 'create']);
 Route::post('/salida', [App\Http\Controllers\admin\salidaController::class, 'sendData']);
 Route::get('/salida/{salida}/edit', [App\Http\Controllers\admin\salidaController::class, 'edit']);

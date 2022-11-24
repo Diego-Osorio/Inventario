@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
-use App\Models\inventario;
 use Illuminate\Http\Request;
 use App\Models\ingreso;
 
@@ -23,12 +22,23 @@ class ingresoController extends Controller
            'date' => 'required',
            'tipedocu'=>'required',
            'ndocu'=>'required|min:10',
+           'code'=>'required|min:10',
+           'nameprod'=>'required|min:10',
+           'number'=>'required',
+
         ];
         $messages = [
-           'name.required' => 'El Ingreso de la Fecha  Es obligatorio ',
-           'tipedocu.required' => 'Debe selecionar el Tipo de Documento ',
-           'ndocu.required'=>'El Ingreso del numero el documento es obligatorio',
-            'ndocu.min'=>'El ingreso de del n° de documento debe tener minimo 10 numeros '
+           'name.required' => 'El Ingreso de la Fecha  Es obligatorio. ',
+           'tipedocu.required' => 'Debe selecionar el Tipo de Documento. ',
+           'ndocu.required'=>'El Ingreso del numero el documento es obligatorio.',
+           'ndocu.min'=>'El ingreso de del n° de documento debe tener minimo 10 numeros. ',
+           'code.required' => 'El Ingreso del codigo del producto  es obligatorio. ',
+           'code.min'=>'El ingreso de del n° de documento debe tener minimo 10 numeros. ',
+           'nameprod.required' => 'El Ingreso del Nombre del Producto es obligatorio. ',
+           'number.required' =>'Debe ingresar la cantidad de Productos.',
+
+
+
            
         ];
 
@@ -36,9 +46,11 @@ class ingresoController extends Controller
 
       $ingreso = new ingreso();
       $ingreso ->date =$request->date('Fecha');
-      $ingreso->tipedocu =$request->integer('tipodocumento');
       $ingreso->ndocu =$request->integer('ndocumento');
-      $ingreso->descripcion =$request->input('description');
+      $ingreso->tipedocu =$request->integer('tipodocumento');
+      $ingreso->code =$request->integer('codigoproducto');
+      $ingreso->nameprod =$request->integer('nombreproducto');
+      $ingreso->number =$request->integer('cantidad');
       $ingreso->save();
       $notification ='El Producto se ha ingresado correctamente.';
 
@@ -50,16 +62,24 @@ class ingresoController extends Controller
   public function update(Request $request,ingreso $ingreso){
 
     $rules = [
-      'date' => 'required',
-      'tipedocu'=>'required',
-      'ndocu'=>'required|min:10',
+           'date' => 'required',
+           'tipedocu'=>'required',
+           'ndocu'=>'required|min:10',
+           'code'=>'required|min:10',
+           'nameprod'=>'required|min:10',
+           'number'=>'required',
         
     ];
     $messages = [
-      'name.required' => 'El Ingreso de la Fecha  Es obligatorio ',
-      'tipedocu.required' => 'Debe selecionar el Tipo de Documento ',
-      'ndocu.required'=>'El Ingreso del numero el documento es obligatorio',
-       'ndocu.min'=>'El ingreso de del n° de documento debe tener minimo 10 numeros '
+           'name.required' => 'El Ingreso de la Fecha  Es obligatorio. ',
+           'tipedocu.required' => 'Debe selecionar el Tipo de Documento. ',
+           'ndocu.required'=>'El Ingreso del numero el documento es obligatorio.',
+           'ndocu.min'=>'El ingreso de del n° de documento debe tener minimo 10 numeros. ',
+           'code.required' => 'El Ingreso del codigo del producto  es obligatorio. ',
+           'code.min'=>'El ingreso de del n° de documento debe tener minimo 10 numeros. ',
+           'nameprod.required' => 'El Ingreso del Nombre del Producto es obligatorio. ',
+           'number.required' =>'Debe ingresar la cantidad de Productos.',
+
     ];
 
   $this->validate($request, $rules, $messages);

@@ -28,7 +28,7 @@ use js\plugins\salida;
 
               @endif
 
-                <form action="{{url('/ingreso')}}" method="POST">
+                <form action="{{url('/salida')}}" method="POST">
                     @csrf
 
     <div class="row">
@@ -66,7 +66,7 @@ use js\plugins\salida;
      </div>
      <div class="col-md-3 col-sm-12">
      <div class="form-group">
-    <label for="exampleFormControlTextarea1">Example textarea</label>
+    <label for="exampleFormControlTextarea1">Descripcion del Producto</label>
     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
   </div>
    </div>
@@ -81,8 +81,8 @@ use js\plugins\salida;
                        </div>
  
                            <div class="btn-group" role="group" aria label="">
-                            <div id="main">
-                              <div class="form-group">
+                    <div id="main">
+                    <div class="form-group">
                     <imput type="buttom1" id="btAdd1" value="Agregar Producto" class ="btn btn-primary float">Añadir Producto</imput>
                     
                     <input type="button" id="btRemove" value="Eliminar" class="btn btn-primary float">
@@ -110,7 +110,7 @@ use js\plugins\salida;
                     <div id="view_uploading_img" class="col-md-12 d-none">
                                     <div class="col-md-2"></div>
                                     <div class="col-md-10">
-                                        <img src="http://posshop.bitspecksolutions.com/uploads" id="view_uploading_img_src" width="200">
+                                        <img src="#" id="view_uploading_img_src" width="200">
                                     </div>
                                 </div>
                             </div>
@@ -118,11 +118,11 @@ use js\plugins\salida;
                          <!-- end col-md-3 -->
                   
                  </div>
-                 <form action="{{url('/inventario')}}" method="POST">
+                 <form action="{{url('/ingreso')}}" method="POST">
                     @csrf
                  <button type="btSubmit" class="btn btn-sm btn-primary ">Ingresar</button>
                  
-                  <a href="{{url('/inventario')}}" class="btn btn-sm btn-success">
+                  <a href="{{url('/ingreso')}}" class="btn btn-sm btn-success">
                   <i class="fas fa-angle-left"></i>  
                   
                   Regresar</a>

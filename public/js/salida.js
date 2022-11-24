@@ -19,26 +19,20 @@ $(document).ready(function() {
                 // Añadir caja de texto.
                 $(container).append(''+ '' +
                 ' ' + iCnt  );
-                $(container).append('<div class="row"><div class="col-md-3 col-sm-12"><div class="form-group"><label for="fecha">Nombre salida1</label><input type="date" class="form-control" id="fecha" placeholder="Fecha" '+ +  + 'select ' +
+                $(container).append('<div class="col"><div class="col-md-12 col-sm-12"><div class="form-group"> <label for="num_documento">Numero de Documento</label><input type="text" class="form-control" id="num_documento" placeholder="Numero de Documento"'+ +  + 'select ' +
                 'value=" ' + iCnt + '" /></div></div></div>');
-                $(container).append('<div class="row"><div class="col-md-3 col-sm-12"><div class="form-group"><label for="num_documento">Nmbre Producto</label><input type="text" class="form-control" id="num_documento" placeholder="Numero de Documento" ' +  + 'select ' +
-                'value=" ' + iCnt + '" /></div></div></div>');
-                $(container).append('<div class="row"><div class="form-group"><div class="col-md-3 col-sm-12"><label>Cantidad</label><input type="text" class="form-control" id="num_documento" placeholder="Numero de Documento" ' +  + 'select ' +
-                'value=" ' + iCnt + '" /></div></div></div>');
+                $(container).append('<div class="col"><div class="col-md-12 col-sm-12><div class="form-group"><label for="num_documento">Numero de Documento</label><input type="text" class="form-control" id="num_documento" placeholder="Numero de Documento" ' +  + 'select ' +
+                'value=" ' + iCnt + '" /></div></div>');
+                $(container).append('<div class="col"><div class="col-md-12 col-sm-12"><div class="form-group"><label for="Cantidad">Cantidad</label><input class="form-control" type="number" value="0" id="example-number-input" ' +  + 'select ' +
+                'value=" ' + iCnt + '" /></select></div></div></div></div>');
 
 
 
                 
 
-                if (iCnt ==1 ) {   
+                
 
-       var divSubmit = $(document.createElement(''));
-                    $(divSubmit).append('<input type=button class="bt" onclick="GetTextValue()"' + 
-                            'id=btSubmit value=Enviar />');
-
-                }
-
- $('#main').after(container, divSubmit); 
+ $('#main').after(container); 
             }
             else {      //se establece un limite para añadir elementos, 20 es el limite
                 
@@ -55,7 +49,6 @@ $(document).ready(function() {
             if (iCnt == 0) { $(container).empty(); 
         
                 $(container).remove(); 
-                $('#btSubmit').remove(); 
                 $('#btAdd1').removeAttr('disabled'); 
                 $('#btAdd1').attr('class', 'bt') 
 

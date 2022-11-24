@@ -12,7 +12,7 @@ use js\plugins\imput;
               <div class="row align-items-center">
                 <div class="col">
                   <h3 class="mb-0"> Nuevo ingreso</h3>
-</div>
+                </div>
               </div>
             </div>
             <div class="card-body">
@@ -31,72 +31,52 @@ use js\plugins\imput;
                 <form action="{{url('/ingreso')}}" method="POST">
                     @csrf
                     <form class="container">
-             <div class="row">
-     <div class="col-md-3 col-sm-12">
-         <div class="form-group">
-            <label for="fecha">Fecha</label>
-            <input type="date" class="form-control" id="fecha" placeholder="Fecha">
-         </div>
-     </div>
-     <div class="col-md-3 col-sm-12">
-       <div class="form-group">
-         <label for="num_documento">Numero de Documento</label>
-         <input type="text" class="form-control" id="num_documento" placeholder="Numero de Documento"/>
-       </div>
-     </div>
-     <div class="col-md-3 col-sm-12">
-       <div class="form-group">
-         <label for="tipo_documento">Tipo de Documento</label>
-         <select type="date" class="form-control" id="tipo_documento" placeholder="Tipo de Documento">
-           <option value="factura">FACTURA</option>
-           <option value="boleta">BOLETA</option>
-         </select>
-       </div>
-     </div>
-   </div>
-</form>
-                    <form class="row">
-                    
-                    <div class="btn-group" role="group" aria label="">
-                            <div id="main">
-                              <div class="form-group">
-                    <imput type="buttom1" id="btAdd1" value="Agregar Producto" class ="btn btn-primary float">Añadir Producto</imput>
-                    
-                    <input type="button" id="btRemove" value="Eliminar" class="btn btn-primary float">
-                    <input type="button" id="btRemoveAll" value="Eliminar Todo" class="btn btn-primary float-rigth" /><br />
-    
-                     </div>
-                    <div id="view_uploading_img" class="col-md-12 d-none">
-                                    <div class="col-md-2"></div>
-                                    <div class="col-md-10">
-                                        <img src="http://posshop.bitspecksolutions.com/uploads" id="view_uploading_img_src" width="200">
-                                    </div>
-                                </div>
-                            </div>
-                        </div> 
-                         <!-- end col-md-3 -->
-                        
-                 </div>
-        </div>
-        <form action="{{url('/inventario')}}" method="POST">
-                    @csrf
-                 <button type="btSubmit" class="btn btn-sm btn-primary ">Ingresar</button>
-                 
-                  <a href="{{url('/inventario')}}" class="btn btn-sm btn-success">
-                  <i class="fas fa-angle-left"></i>  
-                  
-                  Regresar</a>
+                    <div class="row">
+                   <div class="col-md-3 col-sm-12">
+                    <div class="form-group">
+                     <label for="fecha">Fecha</label>
+                     <input type="date" name="fecha" class="form-control" value="{{old('date')}}" id="fecha" placeholder="Fecha" required>
+                   </div>
+                   </div>
+                   <div class="col-md-3 col-sm-12">
+                    <div class="form-group">
+                     <label for="num_documento">Numero de Documento</label>
+                     <input type="text" name="ndocumento"class="form-control" value="{{old('ndocumento')}}" id="num_documento" placeholder="Numero de Documento" required>
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-sm-12">
+                    <div class="form-group">
+                      <label for="tipo_documento">Tipo de Documento</label>
+                      <select type="date" name="tipo_documento" class="form-control" value="{{old('tipo_documento')}}"id="tipo_documento" placeholder="Tipo de Documento" required>
+                         <option value="factura">FACTURA</option>
+                         <option value="boleta">BOLETA</option>
+                      </select>
+                    </div>
+                    </div>
+                    </div>
                 </form>
-    </div>
-    
-   
-            </div>
-            
-        </div>
-        
-      </section>
-      
-    </div>
+                  <div class="btn-group" role="group" aria label="">
+                  <div id="main">
+                          <div class="form-group">
+                             <imput type="buttom" id="btAdd" value="Agregar Producto" class ="btn btn-primary float">Añadir Producto</imput>
+                             <input type="button" id="btRemove" value="Eliminar" class="btn btn-primary float">
+                            <input type="button" id="btRemoveAll" value="Eliminar Todo" class="btn btn-primary float-rigth" /><br />  
+                          </div>
+                        </div>
+                       </div>
+                      </div>
+                    </div>
+                   <form action="{{url('/inventario')}}" method="POST">
+                    @csrf
+                        <button type="btSubmit" class="btn btn-sm btn-primary ">Ingresar</button>
+                           <a href="{{url('/inventario')}}" class="btn btn-sm btn-success">
+                           <i class="fas fa-angle-left"></i>  
+                              Regresar</a>
+                    </form>
+                   </div>
+                  </div>
+                </div>
+              </div>
 @endsection
 
 

@@ -3,9 +3,7 @@ $(document).ready(function() {
 
 // Crear un elemento div añadiendo estilos CSS
         var container = $(document.createElement('div')).css({
-            padding: '10px', margin: '15px', width: '170px', border: '',
-            borderTopColor: '#99', borderBottomColor: '#99',
-            borderLeftColor: '#99', borderRightColor: '#99'
+            
         });
 /**
  * Crea un nuevo elemento de entrada, lo agrega al contenedor y luego agrega el contenedor a la página.
@@ -19,26 +17,18 @@ $(document).ready(function() {
                 // Añadir caja de texto.
                 $(container).append(''+ '' +
                 ' ' + iCnt  );
-                $(container).append('<div class="col"><div class="col-md-3 col-sm-12"><div class="form-group"> <label for="num_documento">Numero de Documento</label><input type="text" class="form-control" id="num_documento" placeholder="Numero de Documento"> '+ +  + 'select ' +
-                'value=" ' + iCnt + '" />');
-                $(container).append('<div class="col-md-3 col-sm-12><div class="form-group"><label for="num_documento">Numero de Documento</label><input type="text" class="form-control" id="num_documento" placeholder="Numero de Documento" ' +  + 'select ' +
+                $(container).append('<div class="col"><div class="col-md-12 col-sm-12"><div class="form-group"> <label for="name_ingreso">codigo del producto</label><input type="text" class="form-control" id="nameingreso" placeholder=""'+ +  + 'select ' +
+                'value=" ' + iCnt + '" /></div></div></div>');
+                $(container).append('<div class="col"><div class="col-md-12 col-sm-12><div class="form-group"><label for=name_producto">Nombre del Producto</label><input type="text" class="form-control" id="name_producto" placeholder="" ' +  + 'select ' +
                 'value=" ' + iCnt + '" /></div></div>');
-                $(container).append('<div class="col-md-3 col-sm-12"><div class="form-group"><label for="tipo_documento">Tipo de Documento</label><select type="date" class="form-control" id="tipo_documento" placeholder="Tipo de Documento"> <option value="factura">FACTURA</option><option value="boleta">BOLETA</option> ' +  + 'select ' +
+                $(container).append('<div class="col"><div class="col-md-12 col-sm-12"><div class="form-group"><label for="Cantidad">Cantidad</label><input class="form-control" type="number" value="0" id="example-number-input" ' +  + 'select ' +
                 'value=" ' + iCnt + '" /></select></div></div></div></div>');
 
 
 
                 
 
-                if (iCnt ==1 ) {   
-
-       var divSubmit = $(document.createElement(''));
-                    $(divSubmit).append('<input type=button class="bt" onclick="GetTextValue()"' + 
-                            'id=btSubmit value=Enviar />');
-
-                }
-
- $('#main').after(container, divSubmit); 
+ $('#main').after(container); 
             }
             else {      //se establece un limite para añadir elementos, 20 es el limite
                 
@@ -55,7 +45,6 @@ $(document).ready(function() {
             if (iCnt == 0) { $(container).empty(); 
         
                 $(container).remove(); 
-                $('#btSubmit').remove(); 
                 $('#btAdd').removeAttr('disabled'); 
                 $('#btAdd').attr('class', 'bt') 
 
