@@ -8,6 +8,10 @@
                 <div class="col">
                   <h3 class="mb-0">Listado de Ingreso</h3>
                 </div>
+                <div class=" col text-right">
+                    <a class="btn btn-sm btn-primary"  href="{{url('ingreso/export')}}">Generar Reporte</a>
+                    </div>
+
                 <div class="col text-right">
                   <a href="{{url('/ingreso/create')}}" class="btn btn-sm btn-primary">Nuevo ingreso</a>
                 </div>
@@ -22,8 +26,11 @@
           </div>
             <div class="table-responsive">
               <!-- Projects table -->
-              <table class="table align-items-center table-flush">
-                <thead class="thead-light">
+              <div class="box-body">        
+               <div class="row">             
+                <div class="col-sm-12">       
+                  <table id="example1" class="table  table-bordered table-hover dataTable no-footer">
+                <thead>
                   <tr>
                   <th scope="col">fecha</th>
                   <th scope="col">ndocumento</th>

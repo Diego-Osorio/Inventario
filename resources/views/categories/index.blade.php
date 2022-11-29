@@ -23,8 +23,11 @@
           </div>
             <div class="table-responsive">
               <!-- Projects table -->
-              <table class="table align-items-center table-flush">
-                <thead class="thead-light">
+              <div class="box-body">        
+               <div class="row">             
+                <div class="col-sm-12">       
+                  <table id="example1" class="table  table-bordered table-hover dataTable no-footer">
+                <thead>
                   <tr>
                     <th scope="col">Nombre</th>
                     <th scope="col">Descripcion</th>
@@ -79,8 +82,11 @@
           </div>
             <div class="table-responsive">
               <!-- Projects table -->
-              <table class="table align-items-center table-flush">
-                <thead class="thead-light">
+              <div class="box-body">        
+               <div class="row">             
+                <div class="col-sm-12">       
+                  <table id="example1" class="table  table-bordered table-hover dataTable no-footer">
+                <thead>
                   <tr>
                     <th scope="col">Nombre</th>
                     <th scope="col">Descripcion</th>

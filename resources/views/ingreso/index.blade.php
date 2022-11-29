@@ -22,7 +22,7 @@
                  </tr>
                 </thead>
                 <tbody>
-                  @foreach($ingresos as $ingreso)
+                  @foreach($ingresar as $ingreso)
                   <tr>
                     <th scope="row">
                       {{$ingreso->fecha}}

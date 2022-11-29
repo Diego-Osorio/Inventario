@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\ingresoController;
+use App\Http\Controllers\Admin\ProductoController;
+use App\Models\ingreso;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -35,35 +38,24 @@ Route::get('/ingreso/create', [App\Http\Controllers\Admin\ingresoController::cla
 
 Route::get('/ingreso', [App\Http\Controllers\admin\ingresoController::class, 'index']);
 /* Creando una ruta al método `sendData` en el `ingresoController`. */
-Route::post('/ingreso', [App\Http\Controllers\Admin\ingresoController::class, 'sendData']);
+Route::post('/ingreso', [App\Http\Controllers\admin\ingresoController::class, 'sendData']);
 /* Creando una ruta al método `show` en el `ingresoController`. */
 Route::get('/ingreso/{ingresos}/show', [App\Http\Controllers\admin\ingresoController::class, 'show']);
-/* Creando una ruta al método `update` en el `ingresoController`. */
 Route::put('/ingreso/{ingresos}', [App\Http\Controllers\admin\ingresoController::class, 'update']);
 /* Creando una ruta al método `destroy` en el `ingresoController`. */
 Route::delete('/ingreso/{ingreso}', [App\Http\Controllers\admin\ingresoController::class, 'destroy']);
+Route::get('ingreso/export', [ingresoController::class, 'export']);
 //salida
-
-/* Creando una ruta para el controlador de salida. */
-Route::get('/salida', [App\Http\Controllers\admin\salidaController::class, 'create']);
-Route::post('/salida', [App\Http\Controllers\admin\salidaController::class, 'sendData']);
-Route::get('/salida/{salida}/edit', [App\Http\Controllers\admin\salidaController::class, 'edit']);
-Route::put('/salida/{salida}', [App\Http\Controllers\admin\salidaController::class, 'update']);
-Route::delete('/salida/{salida}', [App\Http\Controllers\admin\salidaController::class, 'destroy']);
-
-
-
-
 
 });
 
-/* Crear un grupo de rutas al que solo puedan acceder los usuarios que estén autenticados y tengan el
-rol de `Usuarios`. */
 
-/* Crear un grupo de rutas a las que solo puedan acceder los usuarios que estén autenticados y tengan
-el rol de `Usuarios`. */
-/* Creación de un grupo de rutas para el controlador `usuariosController`. */
+/* Creación de una ruta para el controlador de recursos. */
+/* Creando una ruta para el controlador `usuariosController`. */
+
 Route::resource('usuarios',  'App\http\Controllers\usuariosController');
 Route::get('/categorias', [App\Http\Controllers\categoriaController::class, 'index']);
 Route::get('/ingreso', [App\Http\Controllers\ingresosController::class, 'index']);
 Route::get('/ingreso/{ingresos}/show', [App\Http\Controllers\ingresosController::class, 'show']);
+
+

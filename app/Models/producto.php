@@ -9,10 +9,10 @@ class Producto extends Model
     protected $fillable = [
    'id',
    'nombre',
-   'descripcion',
    'marca_id',
    'categoria_id',
    'codigo',
+   'stock',
     ];
     public $timestamps = false;
     

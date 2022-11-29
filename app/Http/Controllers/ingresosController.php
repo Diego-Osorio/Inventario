@@ -28,11 +28,19 @@ class ingresosController extends Controller
 
 public function show ($id)
 {
-    $ingresos = ingreso::find($id);
-    $producto = Producto::find($id);
-      return view('ingresus.show', ['ingreso'=>$ingresos,'productos'=>$producto]);
+    $ingresos = DB::table('ingreso')
+                   ->select('ingreso.id','ingreso.fecha','ingreso.tipodocumento','ingreso.ndocumento')->get();
 
+				   $detalles = DB::table('detalle_ingreso')->select('detalle_ingreso.id','detalle_ingreso.id_ingreso',
+				   'detalle_ingreso.id_producto', 'productos.nombre as producto', 'productos.marca_id','productos.categoria_id',
+				   'marcas.nombre as marca','categorias.nombre as categoria', 'detalle_ingreso.cantidad')
+				    ->join('marcas','marcas.id','=', 'productos.marca_id')
+					->join('categorias','categorias.id','=','productos.categoria_id')
+					->join('detalle_ingreso','detalle_ingreso.id_ingreso', '=','ingreso.id')
+					->join('detalle_ingreso','detalle_ingreso.id_producto','=','productos.id')->get();
 
+					dump($detalles);
+                    //return view('ingresus.show', ['ingreso'=>$ingresos,'detalles'=>$detalles]);
     
 }
 }

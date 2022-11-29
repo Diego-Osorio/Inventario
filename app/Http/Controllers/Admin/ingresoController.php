@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+use App\Exports\productosExport;
 use App\Http\Controllers\Controller;
 use App\Models\categoria;
 use App\Models\detalle_ingreso;
@@ -11,6 +12,7 @@ use Illuminate\Http\Request;
 use App\Models\ingreso;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
+use Maatwebsite\Excel\Facades\Excel;
 use PhpParser\Node\Expr\AssignOp\Concat;
 
 class ingresoController extends Controller
@@ -20,7 +22,7 @@ class ingresoController extends Controller
    public function index(Request $request)
    {
         $ingresos = ingreso::all();
-        $ingresos = ingreso::orderBy('id', 'desc')->paginate(6);
+        $ingresos = ingreso::orderBy('id', 'desc')->paginate(7);
         
         return view('ingresus.index', compact('ingresos'));
     }
@@ -73,7 +75,7 @@ class ingresoController extends Controller
                 $producto->save();
                 $cont++;
                 array_push($productos, $producto);
-               dump($productos);
+              
 
             }
 
@@ -89,10 +91,6 @@ class ingresoController extends Controller
             $detalle_ingresos->save();            
         
           }
-
-          
-               
-           
            DB::commit();
           }catch(\Exception $e){
             DB::rollBack();
@@ -103,15 +101,30 @@ class ingresoController extends Controller
             return redirect('/ingreso')->with(compact('notification'));
         }
         public function show ($id)
-        {
-            $ingresos = ingreso::find($id);
-            $producto = Producto::find($id);
-              return view('ingresus.show', ['ingreso'=>$ingresos,'productos'=>$producto]);
-
         
-            
-        }
+          {
+            $ingresos = DB::table('ingreso')
+            ->select('ingreso.id','ingreso.fecha','ingreso.tipodocumento','ingreso.ndocumento')->get();
 
+    $detalles = DB::table('detalle_ingreso')->select('detalle_ingreso.id','detalle_ingreso.id_ingreso',
+    'detalle_ingreso.id_producto', 'productos.nombre as producto', 'productos.marca_id','productos.categoria_id',
+    'marcas.nombre as marca','categorias.nombre as categoria', 'detalle_ingreso.cantidad')
+     ->join('marcas','marcas.id','=', 'productos.marca_id')
+   ->join('categorias','categorias.id','=','productos.categoria_id')
+   ->join('detalle_ingreso','detalle_ingreso.id_ingreso', '=','ingreso.id')
+   ->join('detalle_ingreso','detalle_ingreso.id_producto','=','productos.id')->get();
+
+   dump($detalles);
+             //return view('ingresus.show', ['ingreso'=>$ingresos,'detalles'=>$detalles]);
+  
+        }
+    
+        public function export()
+          {
+   
+          return Excel::download(new productosExport,'Producto-list.xlsx');
+
+          }
         public function destroy($id)
         {
 
@@ -126,8 +139,8 @@ class ingresoController extends Controller
            
 
         }
-        function __construct() {
-        }
-      
-
-    }
+    
+  
+  public function __construct() {
+  }
+}
