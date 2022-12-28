@@ -34,35 +34,48 @@ use Illuminate\Support\Str;
                      <p>{{$ingreso->tipodocumento}}</p>
                     </div>
                 </div>
+
+                <div class="col-md-4  col-sm-12">
+                    <div class="form-group">
+                      <label for="ordencompra">orden de compra</label>
+                     <p>{{$ingreso->ordencompra}}</p>
+                    </div>
+                </div>
                 <div class="col-md-3 col-sm-12">
                     <div class="form-group">
-                        <label for="codigo">codigo producto</label>
+                        <label for="codigo">Codigo Producto</label>
                         <p>{{$productos->codigo}}</p>
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-12">
                     <div class="form-group">
-                        <label for="nombre">Nombre producto</label>
+                        <label for="nombre">Nombre Producto</label>
                         <p>{{$productos->nombre}}</p>
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-12">
                     <div class="form-group">
-                        <label for="idcategoria">categorias</label>
+                        <label for="idcategoria">Categorias</label>
                         <p>{{$productos->categoria_id}}</p>
                     </div>
                </div>
                <div class="col-md-3 col-sm-12">
                     <div class="form-group">
-                        <label for="idmarca">marca</label>
+                        <label for="idmarca">Marca</label>
                         <p>{{$productos->marca_id}}</p>
                     </div>
                </div>
                 <div class="col-md-3 col-sm-12">
                     <div class="form-group">
-                        <label for="cantidad">cantidad</label>
+                        <label for="cantidad">Cantidad</label>
                         <p>{{$productos->stock}}</p>
                     </div>              
+                </div>
+                <div class="col-md-3 col-sm-12">
+                    <div class="form-group">
+                        <label for="codigo">Ubicacion</label>
+                    </div>
+                    {{ QrCode::size(80)->generate($productos->ubicacion)}}
                 </div>
                <div class="form-group">
                         <input name="_token" value="{{csrf_token() }}" type="hidden"></input>

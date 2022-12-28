@@ -36,7 +36,7 @@ Route::delete('/marca/{marca}', [App\Http\Controllers\admin\MarcaController::cla
 
 Route::get('/ingreso/create', [App\Http\Controllers\Admin\ingresoController::class,'create']);
 
-Route::get('/ingreso', [App\Http\Controllers\admin\ingresoController::class, 'index']);
+Route::get('/ingreso', [App\Http\Controllers\admin\ingresoController::class, 'index'])->name('ingreso.index');
 /* Creando una ruta al método `sendData` en el `ingresoController`. */
 Route::post('/ingreso', [App\Http\Controllers\admin\ingresoController::class, 'sendData']);
 /* Creando una ruta al método `show` en el `ingresoController`. */
@@ -45,6 +45,7 @@ Route::put('/ingreso/{ingresos}', [App\Http\Controllers\admin\ingresoController:
 /* Creando una ruta al método `destroy` en el `ingresoController`. */
 Route::delete('/ingreso/{ingreso}', [App\Http\Controllers\admin\ingresoController::class, 'destroy']);
 Route::get('ingreso/export', [ingresoController::class, 'export']);
+Route::get('download-pdf', [ingresoController::class, 'downloadPDF'])->name('download-pdf');
 //salida
 
 });

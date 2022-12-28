@@ -8,8 +8,10 @@ use App\Models\detalle_ingreso;
 use App\Models\inventario;
 use App\Models\marca;
 use App\Models\Producto;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use App\Models\ingreso;
+
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Maatwebsite\Excel\Facades\Excel;
@@ -21,10 +23,18 @@ class ingresoController extends Controller
 
    public function index(Request $request)
    {
-        $ingresos = ingreso::all();
-        $ingresos = ingreso::orderBy('id', 'desc')->paginate(7);
-        
-        return view('ingresus.index', compact('ingresos'));
+     $textos=$request;
+    $ingresos =ingreso::where('tipodocumento', 'LIKE','%'.$textos.'%')
+      ->orWhere('fecha', 'LIKE','%'.$textos.'%')
+      ->latest('id')
+      ->orderBy('fecha', 'asc')
+      ->paginate(2);
+
+    $data = [
+      'ingresos' => $ingresos,
+      'texto'=>$textos,
+    ];
+      return view('ingresus.index', compact('ingresos','texto'));
     }
 
    
@@ -61,6 +71,7 @@ class ingresoController extends Controller
               $ingreso->fecha = $request->fecha;
               $ingreso->ndocumento = $request->ndocumento;
               $ingreso->tipodocumento = $request->tipodocumento;
+              $ingreso->ordencompra =$request->ordencompra;
               $ingreso->save();  
              
               $productos = []; 
@@ -72,6 +83,7 @@ class ingresoController extends Controller
                 $producto->marca_id=$request->idmarca[$cont];
                 $producto->codigo =$request->codigo[$cont];
                 $producto->stock =$request->cantidad[$cont];
+                $producto->ubicacion =$request->ubicacion[$cont];
                 $producto->save();
                 $cont++;
                 array_push($productos, $producto);
@@ -124,6 +136,13 @@ class ingresoController extends Controller
    
           return Excel::download(new productosExport,'Producto-list.xlsx');
 
+          }
+          public function downloadPDF()
+          {
+              $producto= Producto::all();
+              $pdf = Pdf::loadView('productos.exportpdf', ['productos' => $producto]);
+      
+               return $pdf->download('productos');
           }
         public function destroy($id)
         {

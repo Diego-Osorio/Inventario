@@ -24,7 +24,7 @@
                     </div>
                 </li>
           </li>
-
+          <!-- Divider --
           <li class="nav-item dropdown">
                     <a class="nav-link nav-link-icon" href="#" id="navbar-default_dropdown_1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="	fas fa-angle-double-left"> </i>
@@ -36,7 +36,7 @@
                     </div>
                 </li>
           </li>
-
+-->
     
           <li class="nav-item dropdown">
                     <a class="nav-link nav-link-icon" href="#" id="navbar-default_dropdown_1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

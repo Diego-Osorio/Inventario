@@ -13,6 +13,7 @@ class Producto extends Model
    'categoria_id',
    'codigo',
    'stock',
+   'ubicacion',
     ];
     public $timestamps = false;
     

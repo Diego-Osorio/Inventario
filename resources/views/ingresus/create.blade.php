@@ -35,7 +35,8 @@ use Illuminate\Support\Str;
                         <label for="num_documento">Numero de Documento</label>
                         <input type="text" class="form-control" id="ndocumento" name="ndocumento" placeholder="Numero de Documento"value="{{old('ndocumento')}}">
                     </div>
-                </div>
+                    </div>
+                  
                 <div class="col-md-4  col-sm-12">
                     <div class="form-group">
                       <label for="tipodocumento">Tipo de Documento</label>
@@ -46,6 +47,10 @@ use Illuminate\Support\Str;
                       </select>
                     </div>
                 </div>
+                <form>
+           <p><label for="ordencompra">
+            <input type="file" name="ordencompra"> 
+            </label></p>
                 <div class="col-md-3 col-sm-12">
                     <div class="form-group">
                         <label for="codigo">codigo producto</label>
@@ -83,6 +88,12 @@ use Illuminate\Support\Str;
                         <label for="cantidad">cantidad</label>
                         <input type="number" name="cantidad" id="cantidad" class="form-control" placeholder="cantidad">
                     </div>              
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <div class="form-group">
+                        <label for="ubicacion">Ubicacion Del Producto </label>
+                        <input type="text" name="ubicacion" id="ubicacion" class="form-control" placeholder="nombre" value="{{old('ubicacion')}}">
+                    </div>
                 </div>
                 <div class="col-md-3 col-sm-12">
                   <div class="form-group">
