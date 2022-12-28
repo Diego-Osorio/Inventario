@@ -34,10 +34,9 @@ use Illuminate\Support\Str;
                      <p>{{$ingreso->tipodocumento}}</p>
                     </div>
                 </div>
-
                 <div class="col-md-4  col-sm-12">
                     <div class="form-group">
-                      <label for="ordencompra">orden de compra</label>
+                      <label for="ordencompra">Orden de compra</label>
                      <p>{{$ingreso->ordencompra}}</p>
                     </div>
                 </div>

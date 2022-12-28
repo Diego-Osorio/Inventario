@@ -25,7 +25,7 @@ class ingresoController extends Controller
    {
      $textos=$request;
     $ingresos =ingreso::where('tipodocumento', 'LIKE','%'.$textos.'%')
-      ->orWhere('fecha', 'LIKE','%'.$textos.'%')
+      ->orWhere('tipodocumento', 'LIKE','%'.$textos.'%')
       ->latest('id')
       ->orderBy('fecha', 'asc')
       ->paginate(2);
@@ -84,6 +84,7 @@ class ingresoController extends Controller
                 $producto->codigo =$request->codigo[$cont];
                 $producto->stock =$request->cantidad[$cont];
                 $producto->ubicacion =$request->ubicacion[$cont];
+                $producto->ordencompra_id = $request->ordencompra[$cont];
                 $producto->save();
                 $cont++;
                 array_push($productos, $producto);

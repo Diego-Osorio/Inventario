@@ -47,13 +47,11 @@ use Illuminate\Support\Str;
                       </select>
                     </div>
                 </div>
-                <form>
-           <p><label for="ordencompra">
-            <input type="file" name="ordencompra"> 
-            </label></p>
+            
+           
                 <div class="col-md-3 col-sm-12">
                     <div class="form-group">
-                        <label for="codigo">codigo producto</label>
+                        <label for="codigo">Codigo producto</label>
                         <input type="text" name="codigo" id="codigo" class="form-control" placeholder="codigo">
                     </div>
                 </div>
@@ -65,7 +63,7 @@ use Illuminate\Support\Str;
                 </div>
                 <div class="col-md-3 col-sm-12">
                     <div class="form-group">
-                        <label for="idcategoria">categorias</label>
+                        <label for="idcategoria">Categorias</label>
                         <select name="idcategoria" id="idcategoria" class="form-control">
                             @foreach($categorias as $categoria)
                             <option value="{{$categoria->id}}"> {{$categoria->name}}</option>
@@ -73,9 +71,17 @@ use Illuminate\Support\Str;
                             </select>
                     </div>
                </div>
+                <div class="col-md-3 col-sm-12">
+                    <div class="form-group">
+                   <label for="ordencompra"> Ingrese Orden de Compra</label>
+                   <input type="file" name="ordencompra"> 
+                  
+                    </div>
+               </div>
+
                <div class="col-md-3 col-sm-12">
                     <div class="form-group">
-                        <label for="idcategoria">marca</label>
+                        <label for="idcategoria">Marca</label>
                         <select name="idmarca" id="idmarca" class="form-control">
                             @foreach($marcas as $marca)
                             <option value="{{$marca->id}}"> {{$marca->nombre}}</option>
@@ -85,7 +91,7 @@ use Illuminate\Support\Str;
                </div>
                 <div class="col-md-3 col-sm-12">
                     <div class="form-group">
-                        <label for="cantidad">cantidad</label>
+                        <label for="cantidad">Cantidad</label>
                         <input type="number" name="cantidad" id="cantidad" class="form-control" placeholder="cantidad">
                     </div>              
                 </div>

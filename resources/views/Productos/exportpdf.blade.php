@@ -28,6 +28,7 @@
             <th>Codigo</th>
             <th>Stock</th>
             <th >ubicacion</th>
+            <th>Orden De Compra </th>
             </tr>
             </thead>
             <tbody>
@@ -40,6 +41,7 @@
                 <td>{{$producto->codigo}}</td>
                 <td>{{$producto->stock}}</td>
                 <td>{{$producto->ubicacion}}</td>
+                <td>{{$producto->ordencompra_id}}</td>
                 </tr>
                     
                             @endforeach

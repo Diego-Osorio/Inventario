@@ -23,6 +23,7 @@
                 <td>{{$producto->codigo}}</td>
                 <td>{{$producto->stock}}</td>
                 <td>{{$producto->ubicacion}}</td>
+                <td>{{$producto->ordencompra}}</td>
                 </tr>
             @endforeach 
         </tbody>
