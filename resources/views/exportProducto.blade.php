@@ -11,6 +11,7 @@
             <th>Codigo</th>
             <th>Stock</th>
             <th >ubicacion</th>
+            <th> orden de compra</th>
             </tr>
             </thead>
             <tbody>
