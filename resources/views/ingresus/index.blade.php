@@ -38,12 +38,10 @@
                <form action="url('/ingreso.index')" method="GET">
                 <div class="btn-group">
                 <input type="texto"  name="Buscar "class="form-control">
-                <input type="submit" value="enviar" class="btn btn-primary">
+                <input type="submit" value="Buscar" class="btn btn-primary">
                 </div>
                </form>
-               </div>
-
-
+</div>
             <div class="card-body">
             @if(session('notification'))
                <div class="alert alert-success" role="alert">
