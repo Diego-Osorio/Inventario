@@ -1,54 +1,41 @@
 <!DOCTYPE html>
 <html>
-    <title>Reporte Productos-Laravel Framework</title>
-    <head>
-        <style>
+
+<head>
+    <title>Reporte Productos - Laravel Framework</title>
+    <style>
         table {
-            font-family:arial, sans-serif;
+            font-family: arial, sans-serif;
             border-collapse: collapse;
-            with:100%;
+            width: 100%;
         }
-        td, th{
-            border:1px solid #dddddd;
-            text-align:left;
-            padding:8px;
-        }      
-            tr:nth-child(evend){
-                background-color: #dddddd;
-            }
-            </style>
-            <div class="card-body">
-                    <table class="table table-bordered">
-                    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Nombre</th>
-            <th>marca</th>
-            <th>Categoria</th>
-            <th>Codigo</th>
-            <th>Stock</th>
-            <th >ubicacion</th>
-            <th>Orden De Compra </th>
-            </tr>
-            </thead>
-            <tbody>
-                @foreach($productos as $producto)
-                <tr>
-                <td>{{$producto->id}}</td>
-                <td>{{$producto-> nombre}}</td>
-                <td>{{$producto->marca_id}}</td>
-                <td>{{$producto->categoria_id}}</td>
-                <td>{{$producto->codigo}}</td>
-                <td>{{$producto->stock}}</td>
-                <td>{{$producto->ubicacion}}</td>
-                <td>{{$producto->ordencompra_id}}</td>
-                </tr>
-                    
-                            @endforeach
-                        </tbody>
-                    </table>
-              </div>
-          </div>
-      </div>
-  </body>
+
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card-body">
+        <!-- Your table code here -->
+
+        <!-- Button for Downloading PDF -->
+        <a href="{{ url('download-pdf') }}" class="btn btn-primary" target="_blank">Download PDF</a>
+
+        <!-- Button for Printing PDF -->
+        <button onclick="window.print()" class="btn btn-success">Print PDF</button>
+
+        <!-- Link for Preview PDF -->
+        <a href="{{ url('preview-pdf') }}" class="btn btn-info" target="_blank">Preview PDF</a>
+    </div>
+</body>
+
 </html>

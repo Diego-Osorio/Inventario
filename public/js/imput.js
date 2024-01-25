@@ -16,12 +16,11 @@ function agregar()
   cantidad = $("#cantidad").val();
   idcategoria = $("#idcategoria").val();
   idmarca = $("#idmarca").val();
+  ubicacion = $("ubicacion").val();
 
   if(codigo!="" && producto!="" && cantidad!="" && cantidad>0) 
   {
-   
-
-    var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><input type="hidden" name="producto[]" value="'+producto+'">'+producto+' <input type="hidden" name="idmarca[]" value="'+idmarca+'">'+idmarca+' <input type="hidden" name="idcategoria[]" value="'+idcategoria+'">'+producto+'</td><td><input type="hidden" name="codigo[]" value="'+codigo+'">'+codigo+'</td><td><input type="number" name="cantidad[]" class="form-control" value="'+cantidad+'"></td></tr>';
+    var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><input type="hidden" name="producto[]" value="'+producto+'"> <input type="hidden" name="idmarca[]" value="'+idmarca+'">'+idmarca+' <input type="hidden" name="idcategoria[]" value="'+idcategoria+'">'+producto+'</td><td><input type="hidden" name="codigo[]" value="'+codigo+'">'+codigo+'</td><td><input type="number" name="cantidad[]" class="form-control" value="'+cantidad+'"></td><td><input type="text" name="ubicacion[]" class="form-control" value="'+ubicacion+'"></td></tr>';
      cont++;
      limpiar();
      $('#detalles').append(fila);

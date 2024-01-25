@@ -31,7 +31,6 @@
 
                 <form action="{{url('/marca')}}" method="POST">
                     @csrf
-                  
                  <div class="form-group">
                     <label for="name">Nombre De  la Marca</label>
                     <input type="text"name="name" class="form-control" value="{{ old('name')}}" required>

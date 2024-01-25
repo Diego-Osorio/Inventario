@@ -27,21 +27,10 @@
                         <i class="ni ni-fat-add"></i>
                         <span class="nav-link-inner--text ">Filtrar</span>
                     </a>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar">
-                        <a class="nav-link" href="#">Todo</a>
-                        <a class="dropdown-item" href="FACTURA">Solo  FACTURA</a>
-                        <a class="dropdown-item" href="BOLETA">Solo  BOLETA</a>
-                    </div>
+                 
 </div>
 </li> 
-               <div class=d-md-flex-justify-content-md-end">
-               <form action="url('/ingreso.index')" method="GET">
-                <div class="btn-group">
-                <input type="texto"  name="Buscar "class="form-control">
-                <input type="submit" value="Buscar" class="btn btn-primary">
-                </div>
-               </form>
-</div>
+             
             <div class="card-body">
             @if(session('notification'))
                <div class="alert alert-success" role="alert">
@@ -60,8 +49,8 @@
                 <thead>
                   <tr>
                   <th scope="col">fecha</th>
-                  <th scope="col">ndocumento</th>
-                  <th scope="col">tipodocumento</th>
+                  <th scope="col">N°Documento</th>
+                  <th scope="col">Tipo</th>
                   <th scope="col">opciones</th>
 
                  </tr>

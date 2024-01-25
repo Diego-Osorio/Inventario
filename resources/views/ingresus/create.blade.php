@@ -74,7 +74,7 @@ use Illuminate\Support\Str;
                 <div class="col-md-3 col-sm-12">
                     <div class="form-group">
                    <label for="ordencompra"> Ingrese Orden de Compra</label>
-                   <input type="file" name="ordencompra"> 
+                   <input type="text" name="ordencompra"> 
                   
                     </div>
                </div>
@@ -97,8 +97,8 @@ use Illuminate\Support\Str;
                 </div>
                 <div class="col-md-4 col-sm-12">
                     <div class="form-group">
-                        <label for="ubicacion">Ubicacion Del Producto </label>
-                        <input type="text" name="ubicacion" id="ubicacion" class="form-control" placeholder="nombre" value="{{old('ubicacion')}}">
+                        <label for="ubicacion">Almacen </label>
+                        <input type="text" name="ubicacion" id="ubicacion" class="form-control" placeholder="ubicacion" value="ubicacion">
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-12">
@@ -111,10 +111,11 @@ use Illuminate\Support\Str;
                         <thead style="background-color:#825ee4">
                             <th >opciones</th>
                             <th >Nombre</th>
-                            <th >marca</th>
-                            <th >categorias</th>
                             <th >Codigo</th>
-                            <th >cantidad</th>
+                            <th >Cantidad</th>
+                            <th >Marca</th>
+                            <th >Categorias</th>
+                            <th>Ubicacion</th>
 
                          </thead> 
                         <tfoot>
@@ -124,6 +125,7 @@ use Illuminate\Support\Str;
                           <th ></th> 
                           <th ></th>
                           <th ></th>
+                          <th></th>
                       </tfoot>
                     </table>
                 </div>
@@ -131,10 +133,10 @@ use Illuminate\Support\Str;
                         <input name="_token" value="{{csrf_token() }}" type="hidden"></input>
                 </div>
                 <div class="col-md-6 col-xs-12 col-sm-12">
-                    <button type="submit" class="btn btn-block btn-primary">Ingresar </button>
+                    <button type="submit" class="btn btn-primary">Ingresar </button>
                 </div>
                 <div class="col-md-6 col-xs-12 col-sm-12">
-                    <a href="{{url('/ingreso')}}" class="btn btn-success btn-block">
+                    <a href="{{url('/ingreso')}}" class="btn btn-success ">
                         <i class="fas fa-angle-left"></i>Regresar
                     </a>
                 </div>
@@ -142,58 +144,5 @@ use Illuminate\Support\Str;
         </form>  
     </div>
 </div>  
-@push('script')
-<script src="{{asset('js/plugins/jquery/dist/jquery.min.js')}}"></script>
-<script>
-$(document).ready(function() {
-    $('#bt_add').click(function(){
-       agregar();
-    });
-  });
-  
-  var cont=0;
-  total=0;
-  
-  $("#guardar").show();
-  
-  function agregar() 
-  {
-    codigo = $("#codigo").val();
-    producto = $("#producto").val();
-    cantidad = $("#cantidad").val();
-    idcategoria = $("#idcategoria").val();
-    idmarca = $("#idmarca").val();
-  
-    if(codigo!="" && producto!="" && cantidad!="" && cantidad>0) 
-    {
-     
-  
-      var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><input type="hidden" name="producto[]" value="'+producto+'">'+producto+' <input type="hidden" name="idmarca[]" value="'+idmarca+'">'+idmarca+' <input type="hidden" name="idcategoria[]" value="'+idcategoria+'">'+producto+'</td><td><input type="hidden" name="codigo[]" value="'+codigo+'">'+codigo+'</td><td><input type="number" name="cantidad[]" class="form-control" value="'+cantidad+'"></td></tr>';
-       cont++;
-       limpiar();
-       $('#detalles').append(fila);
-    }
-      else
-    {
-     alert("Error al ingresar el detalle de ingreso, revise los datos del articulo");
-     }
-  }
-  
-  
-  function limpiar(){
-    $("#producto").val("");
-    $("#codigo").val("");
-    $("#cantidad").val("");
-  }
-  
-  
-  function eliminar(index){
-  $("#fila"+ index).remove();
-  
-  
-  }
 
-    </script>
-
-@endpush
 @endsection

@@ -5,8 +5,6 @@
 <div class="row">
             <div class="col-md-12 mb-4">
             <div class="card">
-                <div class="card-header">{{ __('Inicio') }}</div>
-
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
@@ -14,7 +12,8 @@
                         </div>
                     @endif
 
-                    {{ __('¡Estás conectado!') }}
+                    {{ __('¡Bienvenido !') }}
+                    {{auth()->user()->name}}
                 </div>
             </div>
         </div>
@@ -80,6 +79,9 @@
                                 </div>
                             </div>
                         </div>
+
+             
+
 
                         <!-- Pending Requests Card Example -->
                         <div class="col-xl-3 col-md-6 mb-4">

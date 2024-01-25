@@ -17,7 +17,7 @@ class CreateInventariosTable extends Migration
             $table->id();
             $table->string('nombre');
             $table->string('descripcion');
-            $table->unsignedBigInteger('marca_id');
+            $table->unsignedInteger('marcas_id');
             $table->string('codigo');
             $table->timestamps();
         });

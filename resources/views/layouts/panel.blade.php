@@ -49,7 +49,7 @@
               </span>
             </div>
           </a>
-         @include('includes.panel.userOptions')
+          @include('Includes.Panel.userOptions')
         </li>
       </ul>
       <!-- Collapse -->
@@ -82,7 +82,7 @@
           </div>
         </form>
         <!-- Navigation -->
-        @include('includes.panel.menu')
+        @include('Includes.Panel.menu')
       </div>
     </div>
   </nav>
@@ -117,7 +117,8 @@
 
               </div>
             </a>
-            @include('includes.panel.userOptions')
+            @include('Includes.Panel.userOptions')
+
           </li>
         </ul>
       </div>

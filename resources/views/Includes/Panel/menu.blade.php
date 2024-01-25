@@ -96,7 +96,7 @@
         <ul class="navbar-nav">
           <li class="nav-item active active-pro">
             <a class="nav-link" href="./examples/upgrade.html">
-              <i>Gore Ñuble</i>
+              <i>Sistema de Inventario</i>
             </a>
 
 
