@@ -105,27 +105,36 @@ class ingresoController extends Controller
   }
   
 
-        
-        public function show($id)
+  public function show($id)
 {
-    $ingresos = DB::table('ingreso')
-        ->select('ingreso.id', 'ingreso.fecha', 'ingreso.tipodocumento', 'ingreso.ndocumento')
-        ->get();
+    // Obtener información del ingreso específico
+    $ingreso = DB::table('ingreso')
+        ->select('ingreso.id', 'ingreso.fecha', 'ingreso.tipodocumento', 'ingreso.ndocumento', 'ingreso.ordencompra')
+        ->where('ingreso.id', $id)
+        ->first();
+
+    // Verificar si el ingreso existe
+    if (!$ingreso) {
+        abort(404, 'Ingreso no encontrado');
+    }
 
     $detalles = DB::table('detalle_ingreso')
         ->select('detalle_ingreso.id', 'detalle_ingreso.id_ingreso', 'detalle_ingreso.id_producto',
-            'productos.nombre as producto', 'productos.marca_id', 'productos.categoria_id',
+            'productos.nombre as producto', 'productos.marcas_id', 'productos.categoria_id',
             'marcas.nombre as marcas', 'categorias.nombre as categoria', 'detalle_ingreso.cantidad')
-        ->join('marcas', 'marcas.id', '=', 'productos.marca_id')
+        ->join('marcas', 'marcas.id', '=', 'productos.marcas_id')
         ->join('categorias', 'categorias.id', '=', 'productos.categoria_id')
-        ->join('detalle_ingreso as di', 'di.id_ingreso', '=', 'ingreso.id') // Use alias for the first join
-        ->join('productos', 'di.id_producto', '=', 'productos.id') // Use alias for the second join
+        ->where('detalle_ingreso.id_ingreso', $id)
+        ->join('productos', 'detalle_ingreso.id_producto', '=', 'productos.id')
         ->get();
+    // Obtener categorías, marcas y productos únicos
+    $categorias = $detalles->pluck('categoria')->unique();
+    $marcas = $detalles->pluck('marcas')->unique();
+    $productos = $detalles->pluck('producto')->unique();
 
-    dump($detalles);
-
-    // return view('ingresus.show', ['ingreso' => $ingresos, 'detalles' => $detalles]);
+    return view('ingresus.show', compact('ingreso', 'detalles', 'categorias', 'marcas', 'productos'));
 }
+
     
         public function export()
           {

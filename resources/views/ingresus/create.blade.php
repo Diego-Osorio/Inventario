@@ -95,12 +95,16 @@ use Illuminate\Support\Str;
                         <input type="number" name="cantidad" id="cantidad" class="form-control" placeholder="cantidad">
                     </div>              
                 </div>
-                <div class="col-md-4 col-sm-12">
+                <div class="col-md-3 col-sm-12">
                     <div class="form-group">
-                        <label for="ubicacion">Almacen </label>
-                        <input type="text" name="ubicacion" id="ubicacion" class="form-control" placeholder="ubicacion" value="ubicacion">
+                        <label for="idcategoria">Bodega</label>
+                        <select name="idbodegas" id="idbodegas" class="form-control">
+                            @foreach($bodegas as $bodega)
+                            <option value=""> {{$bodegas->nombre}}</option>
+                            @endforeach
+                            </select>
                     </div>
-                </div>
+               </div>
                 <div class="col-md-3 col-sm-12">
                   <div class="form-group">
                     <button type="button" name="bt_add" id="bt_add" class="btn btn-primary">Agregar</button>

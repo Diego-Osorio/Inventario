@@ -6,6 +6,7 @@
   <title>
     {{config('app.name')}}
   </title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Favicon -->
   <link href="{{asset('img/brand/favicon.png')}}" rel="icon" type="image/png">
   <!-- Fonts -->
@@ -112,7 +113,9 @@
                   <img alt="Image placeholder" src="{{asset('img/theme/team-4-800x800.jpg')}}">
                 </span>
                 <div class="media-body ml-2 d-none d-lg-block">
-                  <span class="mb-0 text-sm  font-weight-bold">{{auth()->user()->name}}</span>
+                @if(auth()->check())
+    <span class="mb-0 text-sm font-weight-bold">{{ auth()->user()->name }}</span>
+@endif
                 </div>
 
               </div>
@@ -137,6 +140,7 @@
   <script src="{{asset('js/plugins/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
   @stack('scripts')
   <!--   Optional JS   -->
+  
   <script src="{{asset('js/plugins/chart.js/dist/Chart.min.js')}}"></script>
   <script src="{{asset('js/plugins/chart.js/dist/Chart.extension.js')}}"></script>
   <script src="{{asset('js/imput.js')}}"></script>

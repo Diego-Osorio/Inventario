@@ -2,9 +2,13 @@
 
 use App\Http\Controllers\Admin\ingresoController;
 use App\Http\Controllers\Admin\ProductoController;
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\categoriasController;
 use App\Http\Controllers\Admin\MarcaController;
+use App\Http\Controllers\usuariosController;
+use App\Http\Controllers\BodegasController;
+use App\Http\Middleware\UsuariosMiddleware;
 use App\Models\ingreso;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -21,12 +25,20 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::middleware(['web', 'auth', 'admin'])->group(function () {
     Route::resource('usuario', 'App\Http\Controllers\Admin\AdminController');
     Route::resource('categorias', categoriasController::class);
+    Route::resource('bodegas', BodegasController::class);
+    Route::put('bodegas/deactivate/{bodega}', [BodegasController::class, 'deactivate'])->name('bodegas.deactivate');
+
+  
+
     // Marcas
+    // Intenta con la ruta absoluta
+Route::get('/usuarios', 'App\Http\Controllers\UsuariosController@index');
+
     Route::resource('marca', MarcaController::class);
 
 
-
 /* Creación de las rutas para las operaciones CRUD. */
+
 Route::get('/categorias', [categoriasController::class, 'index']);
 Route::get('/categorias/create', [categoriasController::class, 'create']);
 Route::get('/categorias/{categoria}/edit', [categoriasController::class, 'edit']);
@@ -43,6 +55,12 @@ Route::put('/marca/{marca}', [MarcaController::class, 'update']);
 Route::delete('/marca/{marca}', [MarcaController::class, 'destroy']);
 /* Creando una ruta al método `index` en el `InventarioController`. */
 
+Route::get('/bodega', [BodegasController::class, 'index']);
+Route::get('/bodega/create', [BodegasController::class, 'create']);
+Route::get('/bodega/{bodegas}/edit', [BodegasController::class, 'edit']);
+Route::post('/bodega', [BodegasController::class, 'sendData']);
+Route::put('/bodega/{bodegas}', [BodegasController::class, 'update']);
+Route::delete('/bodega/{bodegas}', [BodegasController::class, 'destroy']);
 
 
 Route::get('/ingreso/create', [App\Http\Controllers\Admin\ingresoController::class,'create']);
@@ -65,7 +83,7 @@ Route::get('download-pdf', [ingresoController::class, 'downloadPDF']);
 
 /* Creación de una ruta para el controlador de recursos. */
 /* Creando una ruta para el controlador `usuariosController`. */
-
+Route::get('/usuarios', [usuariosController::class, 'index']);
 Route::resource('usuarios',  'App\http\Controllers\usuariosController');
 Route::get('/categorias', [App\Http\Controllers\categoriaController::class, 'index']);
 Route::get('/ingreso', [App\Http\Controllers\ingresosController::class, 'index']);
