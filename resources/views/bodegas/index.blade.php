@@ -34,32 +34,32 @@
                     </tr>
                 </thead>
                 <tbody>
-                @foreach($bodegas as $bodega)
-    <tr>
-        <td>{{ $bodega->id }}</td>
-        <td>{{ $bodega->nombre }}</td>
-        <td>{{ $bodega->direccion }}</td>
-        <td>
-            @if($bodega->activo)
-                <span class="badge badge-success">Activada</span>
-            @else
-                <span class="badge badge-danger">Desactivada</span>
-            @endif
-        </td>
-        <td>
-            <div class="btn-group">
-                <a href="{{ route('bodegas.edit', $bodega->id) }}" class="btn btn-warning">
-                    Editar
-                </a>
-                <button class="btn btn-info toggle-activo"
-                        data-bodega-id="{{ $bodega->id }}"
-                        data-activo="{{ $bodega->activo ? '1' : '0' }}">
-                    {{ $bodega->activo ? 'Desactivar' : 'Activar' }}
-                </button>
-            </div>
-        </td>
-    </tr>
-@endforeach
+                    @foreach($bodegas as $bodega)
+                        <tr>
+                            <td>{{ $bodega->id }}</td>
+                            <td>{{ $bodega->nombre }}</td>
+                            <td>{{ $bodega->direccion }}</td>
+                            <td>
+                                @if($bodega->activo)
+                                    <span class="badge badge-success">Activada</span>
+                                @else
+                                    <span class="badge badge-danger">Desactivada</span>
+                                @endif
+                            </td>
+                            <td>
+                                <div class="btn-group">
+                                    <a href="{{ route('bodegas.edit', $bodega->id) }}" class="btn btn-warning">
+                                        Editar
+                                    </a>
+                                    <button class="btn btn-info toggle-activo"
+                                            data-bodega-id="{{ $bodega->id }}"
+                                            data-activo="{{ $bodega->activo ? '1' : '0' }}">
+                                        {{ $bodega->activo ? 'Desactivar' : 'Activar' }}
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
@@ -69,6 +69,7 @@
         </div>
     </div>
 </div>
+
 <div class="modal fade" id="crearBodegaModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -88,7 +89,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="direccion">Direccion:</label>
+                        <label for="direccion">Dirección:</label>
                         <input type="text" name="direccion" class="form-control" required>
                     </div>
 
@@ -98,6 +99,31 @@
         </div>
     </div>
 </div>
-
 @endsection
 
+@section('scripts')
+<script>
+    $(document).ready(function () {
+        $('.toggle-activo').click(function () {
+            var bodegaId = $(this).data('bodega-id');
+            var activo = $(this).data('activo');
+
+            $.ajax({
+                url: '/ruta/para/activar/desactivar/bodega/' + bodegaId,
+                type: 'POST',
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    activo: activo
+                },
+                success: function (response) {
+                    // Si la operación fue exitosa, recargar la página
+                    location.reload();
+                },
+                error: function (xhr) {
+                    console.log(xhr.responseText);
+                }
+            });
+        });
+    });
+</script>
+@endsection

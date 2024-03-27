@@ -3,160 +3,131 @@
 @section('content')
 
 <div class="row">
-            <div class="col-md-12 mb-4">
-            <div class="card">
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
+    <div class="col-md-12 mb-4">
+        <div class="card">
+            <div class="card-body">
+                @if (session('status'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
+                    </div>
+                @endif
+
+                <h4 class="mb-4">¡Bienvenido, {{ auth()->user()->name }}!</h4>
+
+                <div class="row">
+                    @if(auth()->user()->role =='admin')
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <a class="card-link" href="{{ url('/categorias') }}">
+                                <div class="card bg-primary text-white shadow">
+                                    <div class="card-body">
+                                        <div class="row align-items-center">
+                                            <div class="col">
+                                                <h5 class="text-uppercase mb-0">Categorías</h5>
+                                                <span class="h2 font-weight-bold">{{ $categorias }}</span>
+                                            </div>
+                                            <div class="col-auto">
+                                                <i class="fas fa-sitemap fa-2x"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <a class="card-link" href="{{ url('/usuario') }}">
+                                <div class="card bg-success text-white shadow">
+                                    <div class="card-body">
+                                        <div class="row align-items-center">
+                                            <div class="col">
+                                                <h5 class="text-uppercase mb-0">Usuarios</h5>
+                                                <span class="h2 font-weight-bold">{{ $usuarios }}</span>
+                                            </div>
+                                            <div class="col-auto">
+                                                <i class="fas fa-users fa-2x"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <a class="card-link" href="{{ url('/ingreso') }}">
+                                <div class="card bg-info text-white shadow">
+                                    <div class="card-body">
+                                        <div class="row align-items-center">
+                                            <div class="col">
+                                                <h5 class="text-uppercase mb-0">Ingresos</h5>
+                                                <span class="h2 font-weight-bold">{{ $ingreso }}</span>
+                                            </div>
+                                            <div class="col-auto">
+                                                <i class="fas fa-chart-pie fa-2x"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <a class="card-link" href="{{ url('/bodegas') }}">
+                                <div class="card bg-warning text-white shadow">
+                                    <div class="card-body">
+                                        <div class="row align-items-center">
+                                            <div class="col">
+                                                <h5 class="text-uppercase mb-0">Bodegas</h5>
+                                                <span class="h2 font-weight-bold">{{ $bodegas }}</span>
+                                            </div>
+                                            <div class="col-auto">
+                                                <i class="fas fa-warehouse fa-2x"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    @elseif(auth()->user()->role =='usuario')
+                        <div class="col-xl-6 col-md-6 mb-4">
+                            <a class="card-link" href="{{ url('/categorias') }}">
+                                <div class="card bg-primary text-white shadow">
+                                    <div class="card-body">
+                                        <div class="row align-items-center">
+                                            <div class="col">
+                                                <h5 class="text-uppercase mb-0">Categorías</h5>
+                                                <span class="h2 font-weight-bold">{{ $categorias }}</span>
+                                            </div>
+                                            <div class="col-auto">
+                                                <i class="fas fa-sitemap fa-2x"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="col-xl-6 col-md-6 mb-4">
+                            <a class="card-link" href="{{ url('/ingreso') }}">
+                                <div class="card bg-primary text-white shadow">
+                                    <div class="card-body">
+                                        <div class="row align-items-center">
+                                            <div class="col">
+                                                <h5 class="text-uppercase mb-0">Ingresos</h5>
+                                                <span class="h2 font-weight-bold">{{ $ingreso }}</span>
+                                            </div>
+                                            <div class="col-auto">
+                                                <i class="fas fa-chart-pie fa-2x"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
                         </div>
                     @endif
-
-                    {{ __('¡Bienvenido !') }}
-                    {{auth()->user()->name}}
                 </div>
             </div>
         </div>
-        @if(auth()->user()->role =='admin')
-                        <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                        <a class="nav-link " href="{{url('/categorias')}}">
-                            <div class="card border-left-primary shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Categoria</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{$categorias}}</div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-sitemap"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-               
-
-                        <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                        <a class="nav-link " href="{{url('/usuario')}}">
-                            <div class="card border-left-success shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                Usuario</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{$usuarios}}</div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-users"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    
-
-                        <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                        <a class="nav-link " href="{{url('/ingreso')}}">
-                            <div class="card border-left-info shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Productos
-                                            </div>
-                                            <div class="row no-gutters align-items-center">
-                                                <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{$ingreso}}</div>
-                                                </div>  
-                                                   
-                                            </div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-chart-pie"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-             
-
-
-                        <!-- Pending Requests Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                        <a class="nav-link " href="{{url('/ingreso')}}">
-                            <div class="card border-left-warning shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                              Inventario</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{$bodega }}</div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-percent"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-        </div>
     </div>
-        @elseif(auth()->user()->role =='usuario')
-        <!-- categoria -->
-          <div class="col-xl-3 col-md-6 mb-4">
-                        <a class="nav-link " href="{{url('/categorias')}}">
-                            <div class="card border-left-primary shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Categoria</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{$categorias}}</div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-sitemap"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+</div>
 
-             <!-- productos -->
-             <div class="col-xl-3 col-md-6 mb-4">
-                        <a class="nav-link " href="{{url('/ingreso')}}">
-                            <div class="card border-left-primary shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Productos</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{$ingreso}}</div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-sitemap"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-
-            </div>
-
-
-
-        
-        @endif
-
-
-        
-     
-    
-             
 @endsection

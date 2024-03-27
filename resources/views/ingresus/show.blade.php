@@ -1,5 +1,3 @@
-<?php use Illuminate\Support\Str; ?>
-
 @extends('layouts.panel')
 
 @section('content')
@@ -12,68 +10,32 @@
         </div>
     </div>
     <div class="card-body">
-        <form action="{{ url('/ingreso') }}" method="POST">
-            @csrf
-            <div class="col-md-3 col-sm-12">
-                    <div class="form-group">
-                        <label for="nombre">Nombre Producto:</label>
-                        <p>{{ isset($producto) && is_object($producto) ? $producto->nombre : '' }}</p>
+        <div class="row">
+            <div class="col-md-6">
+                <ul class="list-unstyled">
+                    <li><strong>ID:</strong> {{ $ingreso->nombre }}</li>
+                    <li><strong>Fecha:</strong> {{ $ingreso->fecha }}</li>
+                    <li><strong>Tipo de Documento:</strong> {{ $ingreso->tipodocumento }}</li>
+                    <li><strong>Número de Documento:</strong> {{ $ingreso->ndocumento }}</li>
+                    <li><strong>Orden de Compra:</strong> {{ $ingreso->ordencompra }}</li>
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <div class="card border-primary mb-3">
+                    <div class="card-header bg-primary text-white">Código de Barras</div>
+                    <div class="card-body text-center">
+                        @php
+                            // Generar el código de barras
+                            $barcode = DNS2D::getBarcodeSVG("123456789", "QRCODE");
+                        @endphp
+                        {{-- Mostrar el código de barras generado --}}
+                        <div>{!! $barcode !!}</div>
                     </div>
-                </div>
-              
-                <div class="col-md-4 col-sm-12">
-                    <div class="form-group">
-                        <label for="ordencompra">Orden de compra:</label>
-                        <p>{{ $ingreso->ordencompra }}</p>
-                    </div>
-                </div>
-
-                <div class="col-md-3 col-sm-12">
-                    <div class="form-group">
-                        <label for="codigo">Código Producto:</label>
-                        <p>{{ isset($producto) && is_object($producto) ? $producto->codigo : '' }}</p>
-                    </div>
-                </div>
-        
-                <div class="col-md-3 col-sm-12">
-                    <div class="form-group">
-                        <label for="idcategoria">Categoría:</label>
-                        <p>{{ isset($producto) && is_object($producto) ? $producto->categoria_id : '' }}</p>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-12">
-                    <div class="form-group">
-                        <label for="idmarca">Marca:</label>
-                        <p>{{ isset($producto) && is_object($producto) ? $producto->marcas_id : '' }}</p>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-12">
-                    <div class="form-group">
-                        <label for="cantidad">Cantidad:</label>
-                        <p>{{ isset($producto) && is_object($producto) ? $producto->stock : '' }}</p>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-12">
-                    <div class="form-group">
-                        <label for="codigo">Ubicación:</label>
-                        @if(isset($producto) && is_object($producto) && isset($producto->ubicacion))
-                            {{ QrCode::size(80)->generate($producto->ubicacion) }}
-                        @else
-                            <p>No disponible</p>
-                        @endif
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <input name="_token" value="{{ csrf_token() }}" type="hidden">
-                </div>
-                <div class="col text-right">
-                    <a href="{{ url('/ingreso') }}" class="btn btn-sm btn-success">
-                        <i class="fas fa-angle-left"></i> Regresar
-                    </a>
                 </div>
             </div>
-        </form>
+        </div>
     </div>
 </div>
 @endsection
+
+

@@ -21,6 +21,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/search', 'SearchController@search')->name('search');
+Route::post('/update-user-settings', 'UserController@updateSettings')->name('updateUserSettings');
 
 Route::middleware(['web', 'auth', 'admin'])->group(function () {
     Route::resource('usuario', 'App\Http\Controllers\Admin\AdminController');

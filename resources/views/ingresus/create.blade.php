@@ -89,22 +89,25 @@ use Illuminate\Support\Str;
                             </select>
                     </div>
                </div>
+               <div class="col-md-3 col-sm-12">
+    <div class="form-group">
+        <label for="idbodegas">Bodega</label>
+        <select name="idbodegas" id="idbodegas" class="form-control">
+            @foreach($bodegas as $bodega)
+                <option value="{{ $bodega->id }}">{{ $bodega->nombre }}</option>
+            @endforeach
+        </select>
+    </div>
+</div>
+
                 <div class="col-md-3 col-sm-12">
                     <div class="form-group">
                         <label for="cantidad">Cantidad</label>
                         <input type="number" name="cantidad" id="cantidad" class="form-control" placeholder="cantidad">
                     </div>              
                 </div>
-                <div class="col-md-3 col-sm-12">
-                    <div class="form-group">
-                        <label for="idcategoria">Bodega</label>
-                        <select name="idbodegas" id="idbodegas" class="form-control">
-                            @foreach($bodegas as $bodega)
-                            <option value=""> {{$bodegas->nombre}}</option>
-                            @endforeach
-                            </select>
-                    </div>
-               </div>
+            
+
                 <div class="col-md-3 col-sm-12">
                   <div class="form-group">
                     <button type="button" name="bt_add" id="bt_add" class="btn btn-primary">Agregar</button>

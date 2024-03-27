@@ -13,11 +13,12 @@ class Ingreso extends Migration
      */
     public function up()
     {
-        Schema::create('ingresos', function (Blueprint $table) {
+        Schema::create('ingreso', function (Blueprint $table) {
             $table->id();
-            $table->date('Fecha');
-            $table->string('tipodocumento');
+            $table->date('fecha');
             $table->string('ndocumento');
+            $table->string('tipodocumento');
+            $table->string('ordencompra') ->nullable();
             $table->string('codigoproducto');
             $table->string('nombreproducto');
             $table->string('cantidad')->nullable();
