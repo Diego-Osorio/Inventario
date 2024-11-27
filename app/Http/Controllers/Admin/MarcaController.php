@@ -1,90 +1,61 @@
 <?php
 
-namespace App\Http\Controllers\admin;
-use App\Models\marca;
+namespace App\Http\Controllers\Admin;
+
+use App\Models\Marca;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Redirect;
+
 class MarcaController extends Controller
 {
-    
-
-    public function index(){
-        $marcas = marca::all();
-        return view('marca.index',compact('marcas'));
+    public function index()
+    {
+        $marcas = Marca::all();
+        return view('marca.index', compact('marcas'));
     }
 
-    public function create(){
+    public function create()
+    {
         return view('marca.create');
     }
-
-    public function sendData(Request $request){
-
-         $rules = [
-            'name' => 'required|min:5'
-            
-         ];
-         $messages = [
-            'name.required' => 'El Nombre de la marca Es obligatorio ',
-            'name.min' => 'El nombre de la marca Debe tener mas de 5 caracteres.',
-            
-         ];
-
-       $this->validate($request, $rules, $messages);
-
-       $marca = new marca();
-       $marca->nombre =$request->input('name');
-       $marca->descripcion =$request->input('description');
-       $marca->save();
-       $notification ='La marca se ha creado correctamente.';
-
-       return Redirect('/marca')->with(compact('notification'));
-       
+    public function store(Request $request)
+    {
+        $data = $request->validate([
+            'nombre' => 'required|string|min:5|max:255',
+            'descripcion' => 'nullable|string|max:500',
+        ], [
+            'nombre.required' => 'El campo "Nombre" es obligatorio.',
+            'nombre.min' => 'El campo "Nombre" debe tener al menos 5 caracteres.',
+        ]);
+    
+        Marca::create($data);
+    
+        return redirect()->route('marca.index')->with('success', 'Marca creada exitosamente.');
     }
-   
-    public function edit(marca $marca){
-      return view('marca.edit',compact('marca'));
+    
+
+    public function edit(Marca $marca)
+    {
+        return view('marca.edit', compact('marca'));
     }
 
-    public function update(Request $request,marca $marca){
+    public function update(Request $request, Marca $marca)
+    {
+        $data = $request->validate([
+            'nombre' => 'required|string|min:5|max:255',
+            'descripcion' => 'nullable|string|max:500',
+        ]);
 
-      $rules = [
-         'name' => 'required|min:5'
-          
-      ];
-      $messages = [
-         'name.required' => 'El Nombre de la marca Es obligatorio ',
-         'name.required' => 'El Nombre debe Empezar con Mayuscula',
-         'name.min' => 'El nombre de la marca Debe tener mas de 5 caracteres.',
-         
-      ];
+        $marca->update($data);
 
-    $this->validate($request, $rules, $messages);
+        return redirect()->route('marca.index')->with('success', 'Marca actualizada exitosamente.');
+    }
 
-    $marca->nombre =$request->input('name');
-    $marca->descripcion =$request->input('description');
-    $marca->save();
-    $notification ='La marcas se ha actualizado correctamente.';
+    public function destroy(Marca $marca)
+    {
+        $nombre = $marca->nombre;
+        $marca->delete();
 
-    return redirect('/marca')->with(compact('notification'));
-
-
-   }
-
-
-   public function destroy(marca $marca) {
-      $deleteName = $marca->name;
-      $marca->delete();
-      $notification ='La marca ' .$deleteName .'  se ha eliminado correctamente.';
-      return redirect('/marca')->with(compact('notification'));
-
-
-   }
-
-
-
-
+        return redirect()->route('marca.index')->with('success', "La marca '{$nombre}' se ha eliminado correctamente.");
+    }
 }
-
-
-

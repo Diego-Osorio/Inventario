@@ -14,10 +14,10 @@ class CreatecategoriasTable extends Migration
     public function up()
     {
         Schema::create('categorias', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id(); // Esto es equivalente a unsignedBigInteger('id')
             $table->string('name');
             $table->string('descripcion')->nullable();
-            $table->timestamps();
+            $table->timestamps();;
         });
     }
 

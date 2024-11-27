@@ -14,7 +14,8 @@ class Ingreso extends Migration
     public function up()
     {
         Schema::create('ingreso', function (Blueprint $table) {
-            $table->id();
+            $table->id();   
+           
             $table->date('fecha');
             $table->string('ndocumento');
             $table->string('tipodocumento');

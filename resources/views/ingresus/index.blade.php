@@ -18,7 +18,7 @@
                         <a class="dropdown-item" href="{{ url('download-pdf') }}">Descargar en PDF</a>
                     </div>
                 </div>
-                <a href="{{ url('/ingreso/create') }}" class="btn btn-sm btn-primary ml-2">Nuevo ingreso</a>
+                <a href="{{ url('/ingresus/create') }}" class="btn btn-sm btn-primary ml-2">Nuevo ingreso</a>
             </div>
             @endif
         </div>

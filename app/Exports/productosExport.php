@@ -1,24 +1,13 @@
 <?php
-
 namespace App\Exports;
 
-use App\Models\detalle_ingreso;
-use App\Models\ingreso;
-use Illuminate\Contracts\View\View;
-use Maatwebsite\Excel\Concerns\FromView;
 use App\Models\Producto;
 use Maatwebsite\Excel\Concerns\FromCollection;
-class productosExport implements FromView
+
+class ProductosExport implements FromCollection
 {
-    /**
-    * @return \Illuminate\Support\Collection
-    */
-    public function view(): View
+    public function collection()
     {
-        return view ('exportProducto',[
-            'productos' =>Producto::all()
-        ]);
-        
+        return Producto::all();  // O ajusta esta consulta según lo que necesites exportar
     }
-	
 }

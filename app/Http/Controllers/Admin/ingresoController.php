@@ -8,10 +8,10 @@ use App\Models\detalle_ingreso;
 use App\Models\inventario;
 use App\Models\marca;
 use App\Models\Producto;
+use App\Models\bodegas;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use App\Models\ingreso;
-use App\Models\bodegas;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
@@ -22,7 +22,7 @@ class ingresoController extends Controller
 {
  
 
-    public function index(Request $request)
+  public function index(Request $request)
   {
       $textos = $request->input('textos'); // Use the correct input name from the form
   
@@ -34,21 +34,23 @@ class ingresoController extends Controller
   
       return view('ingresus.index', compact('ingresos', 'textos'));
   }
-    
+   
    
   public function create()
   {
         $categorias=categoria::orderBy('id')->get();
-        $marcas=marca::orderBy('id')->get(); 
+        $marcas=marca::orderBy('id')->get();  
         $bodegas = bodegas::orderBy('id')->get();
       return view('ingresus.create',['categorias'=>$categorias,'marcas'=>$marcas,'bodegas'=>$bodegas]);
   }
+   
   public function sendData(Request $request)
   {
       $rules = [
           'fecha' => 'required',
           'ndocumento' => 'required',
           'tipodocumento' => 'required',
+          'bodega_id' => 'required|integer',
       ];
   
       $messages = [
@@ -76,13 +78,12 @@ class ingresoController extends Controller
               $producto = new Producto();
   
               $producto->nombre = $request->producto[$cont];
-              $producto->categoria_id = $request->idcategoria[$cont];
-              $producto->marcas_id = isset($request->marcas_id) ? $request->marcas_id : null;
               $producto->codigo = $request->codigo[$cont];
+              $producto->categoria_id =  $request->idcategoria[$cont];
+              $producto->marcas_id = isset($request->marcas_id) ? $request->marcas_id : null;
               $producto->stock = $request->cantidad[$cont];
               $producto->descripcion = $request->descripcion[$cont] ?? "Default Description";
-              $producto->ordencompra_id = isset($request->idordencompra[$cont]) ? $request->idordencompra[$cont] : null;
-              $producto->bodega_id = isset($request->bodega_id) ? $request->bodega_id : null;
+              $producto->bodega_id = $request->bodega_id;
               $producto->save();
               $productos[] = $producto;
   
@@ -105,38 +106,42 @@ class ingresoController extends Controller
       return redirect('/ingreso')->with(compact('notification'));
   }
   
+
   public function show($id)
-  {
-      // Obtener información del ingreso específico
-      $ingreso = DB::table('ingreso')
-          ->select('ingreso.id', 'ingreso.fecha', 'ingreso.tipodocumento', 'ingreso.ndocumento', 'ingreso.ordencompra')
-          ->where('ingreso.id', $id)
-          ->first();
-  
-      // Verificar si el ingreso existe
-      if (!$ingreso) {
-          abort(404, 'Ingreso no encontrado');
-      }
-  
-      $detalles = DB::table('detalle_ingreso')
-          ->select('detalle_ingreso.id', 'detalle_ingreso.id_ingreso', 'detalle_ingreso.id_producto',
-              'productos.nombre as producto', 'productos.marcas_id', 'productos.categoria_id',
-              'marcas.nombre as marcas', 'categorias.nombre as categoria', 'detalle_ingreso.cantidad')
-          ->join('marcas', 'marcas.id', '=', 'productos.marcas_id')
-          ->join('categorias', 'categorias.id', '=', 'productos.categoria_id')
-          ->where('detalle_ingreso.id_ingreso', $id)
-          ->join('productos', 'detalle_ingreso.id_producto', '=', 'productos.id')
-          ->get();
-  
-      return view('ingresus.show', compact('ingreso', 'detalles'));
-  }
-  
+{
+    // Obtener información del ingreso específico
+    $ingreso = DB::table('ingreso')
+        ->select('ingreso.id', 'ingreso.fecha', 'ingreso.tipodocumento', 'ingreso.ndocumento', 'ingreso.ordencompra')
+        ->where('ingreso.id', $id)
+        ->first();
+
+    // Verificar si el ingreso existe
+    if (!$ingreso) {
+        abort(404, 'Ingreso no encontrado');
+    }
+
+    $detalles = DB::table('detalle_ingreso')
+        ->select('detalle_ingreso.id', 'detalle_ingreso.id_ingreso', 'detalle_ingreso.id_producto',
+            'productos.nombre as producto', 'productos.marcas_id', 'productos.categoria_id',
+            'marcas.nombre as marcas', 'categorias.nombre as categoria', 'detalle_ingreso.cantidad')
+        ->join('marcas', 'marcas.id', '=', 'productos.marcas_id')
+        ->join('categorias', 'categorias.id', '=', 'productos.categoria_id')
+        ->where('detalle_ingreso.id_ingreso', $id)
+        ->join('productos', 'detalle_ingreso.id_producto', '=', 'productos.id')
+        ->get();
+    // Obtener categorías, marcas y productos únicos
+    $categorias = $detalles->pluck('categoria')->unique();
+    $marcas = $detalles->pluck('marcas')->unique();
+    $productos = $detalles->pluck('producto')->unique();
+
+    return view('ingresus.show', compact('ingreso', 'detalles', 'categorias', 'marcas', 'productos'));
+}
 
     
         public function export()
           {
    
-          return Excel::download(new productosExport,'Producto-list.xlsx');
+          return Excel::download(new productosExport,'Productos-list.xlsx');
 
           }
           public function downloadPDF()

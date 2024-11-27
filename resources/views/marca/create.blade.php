@@ -29,18 +29,18 @@
 
               @endif
 
-                <form action="{{url('/marca')}}" method="POST">
-                    @csrf
-                 <div class="form-group">
-                    <label for="name">Nombre De  la Marca</label>
-                    <input type="text"name="name" class="form-control" value="{{ old('name')}}" required>
-                 </div>
-                 <div class="form-group">
-                    <label for="description">Descripcion</label>
-                    <input type="text"name="description" class="form-control" value="{{old('description')}}" >
-                 </div>
-                 <button type="submit" class="btn btn-sm btn-primary ">Crear marca</button>
-                </form>
+              <form action="{{ url('/marca') }}" method="POST">
+    @csrf
+    <div class="form-group">
+        <label for="nombre">Nombre de la Marca</label>
+        <input type="text" name="nombre" class="form-control" value="{{ old('nombre') }}" required>
+    </div>
+    <div class="form-group">
+        <label for="descripcion">Descripción</label>
+        <input type="text" name="descripcion" class="form-control" value="{{ old('descripcion') }}">
+    </div>
+    <button type="submit" class="btn btn-sm btn-primary">Crear Marca</button>
+</form>
                  </div>
           </div>
 @endsection

@@ -15,9 +15,9 @@ class CreateBodegas extends Migration
     {
         Schema::create('bodegas', function (Blueprint $table) {
             $table->id();
-            $table->nombre();
-            $table->direccion();
-            $table->estado();
+            $table->string('nombre'); // Correct
+            $table->string('direccion'); // Change to a valid column type, e.g., string
+            $table->string('estado'); // Change to a valid column type, e.g., string
             $table->timestamps();
         });
     }
