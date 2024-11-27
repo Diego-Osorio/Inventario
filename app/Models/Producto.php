@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -9,14 +8,25 @@ class Producto extends Model
 {
     use HasFactory;
 
+    protected $table = 'productos';
+
     protected $fillable = [
-        'nombre', 'categoria_id', 'marcas_id', 'codigo', 'stock', 'ubicacion', 'ordencompra_id', 'bodega_id', 'estado'
+        'nombre',
+        'codigo',
+        'marcas_id',
+        'categoria_id',
+        'stock',
+        'descripcion',
+        'bodega_id',
     ];
 
-    public $timestamps = false;
-
-    public function bodega()
+    public function marca()
     {
-        return $this->belongsTo(bodegas::class);
+        return $this->belongsTo(Marca::class, 'marcas_id');
+    }
+
+    public function categoria()
+    {
+        return $this->belongsTo(Categoria::class, 'categoria_id');
     }
 }

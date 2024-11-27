@@ -37,7 +37,7 @@ class categoriasController extends Controller
        $this->validate($request, $rules, $messages);
 
        $categoria = new categorias();
-       $categoria->name =$request->input('name');
+       $categoria->nombre =$request->input('nombre');
        $categoria->descripcion =$request->input('description');
        $categoria->save();
        $notification ='La Categoria se ha creado correctamente.';
@@ -65,7 +65,7 @@ class categoriasController extends Controller
 
     $this->validate($request, $rules, $messages);
 
-    $categoria->name =$request->input('name');
+    $categoria->nombre =$request->input('nombre');
     $categoria->descripcion =$request->input('description');
     $categoria->save();
     $notification ='La Categoria se ha actualizado correctamente.';
@@ -99,7 +99,7 @@ class categoriasController extends Controller
        $this->validate($request, $rules, $messages);
 
        $categoria = new categorias();
-       $categoria->name = $request->input('name');
+       $categoria->nombre = $request->input('name');
        $categoria->descripcion = $request->input('description');
        $categoria->save();
 

@@ -15,7 +15,7 @@ class CreatecategoriasTable extends Migration
     {
         Schema::create('categorias', function (Blueprint $table) {
             $table->id(); // Esto es equivalente a unsignedBigInteger('id')
-            $table->string('name');
+            $table->string('nombre');
             $table->string('descripcion')->nullable();
             $table->timestamps();;
         });
@@ -28,6 +28,8 @@ class CreatecategoriasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categorias');
-    }
+    Schema::table('categorias', function (Blueprint $table) {
+        $table->dropColumn('nombre');
+    });
+}
 }

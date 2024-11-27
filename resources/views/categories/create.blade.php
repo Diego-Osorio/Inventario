@@ -34,7 +34,7 @@
                   
                  <div class="form-group">
                     <label for="name">Nombre De Categoria</label>
-                    <input type="text"name="name" class="form-control" value="{{ old('name')}}" required>
+                    <input type="text"name="name" class="form-control" value="{{ old('nombre')}}" required>
                  </div>
                  <div class="form-group">
                     <label for="description">Descripcion</label>

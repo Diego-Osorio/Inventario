@@ -70,7 +70,7 @@
                         <label for="idcategoria">Categoría</label>
                         <select name="idcategoria" id="idcategoria" class="form-control">
                             @foreach($categorias as $categoria)
-                                <option value="{{ $categoria->id }}">{{ $categoria->name }}</option>
+                                <option value="{{ $categoria->id }}">{{ $categoria->nombre }}</option>
                             @endforeach
                         </select>
                     </div>

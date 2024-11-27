@@ -1,5 +1,6 @@
 <?php
 
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -9,9 +10,12 @@ class Marca extends Model
 {
     use HasFactory;
 
-    // Campos permitidos para asignación masiva
-    protected $fillable = [
-        'nombre', 
-        'descripcion'
-    ];
+    protected $table = 'marcas';
+
+    protected $fillable = ['nombre', 'descripcion'];
+
+    public function productos()
+    {
+        return $this->hasMany(Producto::class, 'marcas_id');
+    }
 }

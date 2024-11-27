@@ -33,7 +33,7 @@
             <tbody>
                 @foreach($categories as $categoria)
                 <tr>
-                    <td>{{ $categoria->name }}</td>
+                    <td>{{ $categoria->nombre }}</td>
                     <td>{{ $categoria->descripcion }}</td>
                     <td>
                         <form action="{{ url('/categorias/'.$categoria->id) }}" method="POST">

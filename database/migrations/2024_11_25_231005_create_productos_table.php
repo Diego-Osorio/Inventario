@@ -12,17 +12,18 @@ class CreateProductosTable extends Migration
             $table->id();
             $table->string('nombre');
             $table->string('codigo')->unique();
-            $table->unsignedBigInteger('marcas_id');
+            $table->unsignedBigInteger('marcas_id'); // Columna marcas_id
             $table->integer('stock');
             $table->text('descripcion')->nullable();
             $table->unsignedBigInteger('bodega_id');
             $table->timestamps();
-            $table->unsignedBigInteger('categoria_id'); // Asegúrate de usar unsignedBigInteger
-            $table->foreign('categoria_id')->references('id')->on('categorias');
-            // Definir las claves foráneas si existen las tablas correspondientes
-           
-            $table->foreign('marcas_id')->references('id')->on('marcas');
-            $table->foreign('bodega_id')->references('id')->on('bodegas');
+            $table->unsignedBigInteger('categoria_id'); // Columna categoria_id
+        
+            // Claves foráneas
+            $table->foreign('marcas_id')->references('id')->on('marcas')->onDelete('cascade');
+            $table->foreign('categoria_id')->references('id')->on('categorias')->onDelete('cascade');
+            $table->foreign('bodega_id')->references('id')->on('bodegas')->onDelete('cascade');
+                
         });
     }
 
