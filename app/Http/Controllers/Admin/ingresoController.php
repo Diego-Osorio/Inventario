@@ -108,34 +108,36 @@ class ingresoController extends Controller
   
 
   public function show($id)
-{
-    // Obtener información del ingreso específico
-    $ingreso = DB::table('ingreso')
-        ->select('ingreso.id', 'ingreso.fecha', 'ingreso.tipodocumento', 'ingreso.ndocumento', 'ingreso.ordencompra')
-        ->where('ingreso.id', $id)
-        ->first();
-
-    // Verificar si el ingreso existe
-    if (!$ingreso) {
-        abort(404, 'Ingreso no encontrado');
-    }
-
-    $detalles = DB::table('detalle_ingreso')
-        ->select('detalle_ingreso.id', 'detalle_ingreso.id_ingreso', 'detalle_ingreso.id_producto',
-            'productos.nombre as producto', 'productos.marcas_id', 'productos.categoria_id',
-            'marcas.nombre as marcas', 'categorias.nombre as categoria', 'detalle_ingreso.cantidad')
-        ->join('marcas', 'marcas.id', '=', 'productos.marcas_id')
-        ->join('categorias', 'categorias.id', '=', 'productos.categoria_id')
-        ->where('detalle_ingreso.id_ingreso', $id)
-        ->join('productos', 'detalle_ingreso.id_producto', '=', 'productos.id')
-        ->get();
-    // Obtener categorías, marcas y productos únicos
-    $categorias = $detalles->pluck('categoria')->unique();
-    $marcas = $detalles->pluck('marcas')->unique();
-    $productos = $detalles->pluck('producto')->unique();
-
-    return view('ingresus.show', compact('ingreso', 'detalles', 'categorias', 'marcas', 'productos'));
-}
+  {
+      // Obtener información del ingreso específico
+      $ingreso = DB::table('ingreso')
+          ->select('ingreso.id', 'ingreso.fecha', 'ingreso.tipodocumento', 'ingreso.ndocumento', 'ingreso.ordencompra')
+          ->where('ingreso.id', $id)
+          ->first();
+  
+      // Verificar si el ingreso existe
+      if (!$ingreso) {
+          abort(404, 'Ingreso no encontrado');
+      }
+  
+      $detalles = DB::table('detalle_ingreso')
+          ->select('detalle_ingreso.id', 'detalle_ingreso.id_ingreso', 'detalle_ingreso.id_producto',
+              'productos.nombre as producto', 'productos.marcas_id', 'productos.categoria_id',
+              'marcas.nombre as marcas', 'categorias.nombre as categoria', 'detalle_ingreso.cantidad')
+          ->join('productos', 'detalle_ingreso.id_producto', '=', 'productos.id') // Primero unimos productos
+          ->join('marcas', 'marcas.id', '=', 'productos.marcas_id') // Luego unimos marcas
+          ->join('categorias', 'categorias.id', '=', 'productos.categoria_id') // Finalmente unimos categorias
+          ->where('detalle_ingreso.id_ingreso', $id)
+          ->get();
+  
+      // Obtener categorías, marcas y productos únicos
+      $categorias = $detalles->pluck('categoria')->unique();
+      $marcas = $detalles->pluck('marcas')->unique();
+      $productos = $detalles->pluck('producto')->unique();
+  
+      return view('ingresus.show', compact('ingreso', 'detalles', 'categorias', 'marcas', 'productos'));
+  }
+  
 
     
         public function export()

@@ -13,11 +13,12 @@
         <div class="row">
             <div class="col-md-6">
                 <ul class="list-unstyled">
-                    <li><strong>ID:</strong> {{ $ingreso->nombre }}</li>
-                    <li><strong>Fecha:</strong> {{ $ingreso->fecha }}</li>
-                    <li><strong>Tipo de Documento:</strong> {{ $ingreso->tipodocumento }}</li>
-                    <li><strong>Número de Documento:</strong> {{ $ingreso->ndocumento }}</li>
-                    <li><strong>Orden de Compra:</strong> {{ $ingreso->ordencompra }}</li>
+             <li><strong>ID:</strong> {{ $ingreso->id }}</li>
+<li><strong>Fecha:</strong> {{ $ingreso->fecha }}</li>
+<li><strong>Tipo de Documento:</strong> {{ $ingreso->tipodocumento }}</li>
+<li><strong>Número de Documento:</strong> {{ $ingreso->ndocumento }}</li>
+<li><strong>Orden de Compra:</strong> {{ $ingreso->ordencompra }}</li>
+
                 </ul>
             </div>
             <div class="col-md-6">

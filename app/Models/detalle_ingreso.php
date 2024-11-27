@@ -17,4 +17,8 @@ class detalle_ingreso extends Model
      */
     public function __construct() {
     }
+    public function producto()
+    {
+        return $this->belongsTo(Producto::class, 'id_producto');
+    }
 }
