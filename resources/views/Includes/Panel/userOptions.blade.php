@@ -4,10 +4,17 @@
         <h6 class="text-overflow m-0">¡Bienvenidos!</h6>
     </div>
 
-    <a href="#" class="dropdown-item" onclick="event.preventDefault(); document.getElementById('usersettings').submit();">
+    <!-- <a href="#" class="dropdown-item" onclick="event.preventDefault(); document.getElementById('usersettings').submit();">
     <i class="ni ni-settings-gear-65"></i>
     <span>Configuración</span>
-</a>
+    </a> -->
+
+
+    <a class="dropdown-item" href="{{ route('profile.edit') }}">
+        <i class="ni ni-settings-gear-65"></i>
+        <span>Configuración</span>
+    </a>
+
 
     <!-- Enlace para soporte -->
     <a href="#" class="dropdown-item">

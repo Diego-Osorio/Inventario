@@ -14,7 +14,13 @@ class ingreso extends Model
     }
     public $table ='ingreso';
     public $timestamps = false;
-    
+ 
+    // En el modelo Ingreso
+public function detalle()
+{
+    return $this->hasOne(DetalleIngreso::class);
+}
+
 }
 
 

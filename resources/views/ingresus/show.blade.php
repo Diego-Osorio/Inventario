@@ -1,42 +1,52 @@
 @extends('layouts.panel')
 
 @section('content')
-<div class="card shadow">
-    <div class="card-header border-0">
-        <div class="row align-items-center">
-            <div class="col">
-                <h3 class="mb-0">Detalles del ingreso</h3>
-            </div>
-        </div>
+<div class="card shadow w-50 mx-auto">
+    <div class="card-header bg-primary text-white text-center">
+        <h5 class="mb-0">Detalles del Ingreso</h5>
     </div>
     <div class="card-body">
-        <div class="row">
-            <div class="col-md-6">
-                <ul class="list-unstyled">
-             <li><strong>ID:</strong> {{ $ingreso->id }}</li>
-<li><strong>Fecha:</strong> {{ $ingreso->fecha }}</li>
-<li><strong>Tipo de Documento:</strong> {{ $ingreso->tipodocumento }}</li>
-<li><strong>Número de Documento:</strong> {{ $ingreso->ndocumento }}</li>
-<li><strong>Orden de Compra:</strong> {{ $ingreso->ordencompra }}</li>
+        <!-- Información del ingreso -->
+        <div class="table-responsive">
+            <table class="table table-sm table-borderless mx-auto">
+                <tbody>
+                    <!-- <tr>
+                        <th class="text-muted text-end pe-3">ID:</th>
+                        <td class="text-start">{{ $ingreso->id }}</td>
+                    </tr> -->
+                    <tr>
+                        <th class="text-muted text-end pe-3">Fecha:</th>
+                        <td class="text-start">{{ $ingreso->fecha }}</td>
+                    </tr>
+                    <tr>
+                        <th class="text-muted text-end pe-3">Tipo de Documento:</th>
+                        <td class="text-start">{{ $ingreso->tipodocumento }}</td>
+                    </tr>
+                    <tr>
+                        <th class="text-muted text-end pe-3">Número de Documento:</th>
+                        <td class="text-start">{{ $ingreso->ndocumento }}</td>
+                    </tr>
+                    <tr>
+                        <th class="text-muted text-end pe-3">Stock:</th>
+                        <td class="text-start">{{ $ingreso->cantidad ?? 'Sin datos' }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
-                </ul>
-            </div>
-            <div class="col-md-6">
-                <div class="card border-primary mb-3">
-                    <div class="card-header bg-primary text-white">Código de Barras</div>
-                    <div class="card-body text-center">
-                        @php
-                            // Generar el código de barras
-                            $barcode = DNS2D::getBarcodeSVG("123456789", "QRCODE");
-                        @endphp
-                        {{-- Mostrar el código de barras generado --}}
-                        <div>{!! $barcode !!}</div>
-                    </div>
+        <!-- Código QR -->
+        <div class="text-center mt-3">
+            <div class="border border-primary rounded p-3">
+                <h6 class="text-primary mb-3">Código QR</h6>
+                @php
+                    // Generar el código QR dinámicamente
+                    $barcode = DNS2D::getBarcodeSVG($ingreso->ndocumento ?? 'Sin datos', 'QRCODE', 4, 4);
+                @endphp
+                <div>
+                    {!! $barcode !!}
                 </div>
             </div>
         </div>
     </div>
 </div>
 @endsection
-
-

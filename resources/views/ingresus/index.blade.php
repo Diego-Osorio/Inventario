@@ -46,14 +46,17 @@
                         <td>{{ $ingreso->ndocumento }}</td>
                         <td>{{ $ingreso->tipodocumento }}</td>
                         <td>
-                            <form action="{{ url('/ingreso/'.$ingreso->id) }}" method="POST">
+                            <!-- Botón de Detalles -->
+                            <a href="{{ url('/ingreso/'.$ingreso->id.'/show') }}" class="btn btn-sm btn-outline-info">Detalles</a>
+
+                            @if(auth()->user()->role == 'admin')
+                            <!-- Formulario para Anular -->
+                            <form action="{{ url('/ingreso/'.$ingreso->id) }}" method="POST" class="d-inline">
                                 @csrf
                                 @method('DELETE')
-                                <a href="{{ url('/ingreso/'.$ingreso->id.'/show') }}" class="btn btn-sm btn-outline-info">Detalles</a>
-                                @if(auth()->user()->role == 'admin')
                                 <button type="submit" class="btn btn-sm btn-outline-danger">Anular</button>
-                                @endif
                             </form>
+                            @endif
                         </td>
                     </tr>
                     @endforeach

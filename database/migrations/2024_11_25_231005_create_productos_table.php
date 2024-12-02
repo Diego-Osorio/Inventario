@@ -14,7 +14,7 @@ class CreateProductosTable extends Migration
             $table->string('codigo')->unique();
             $table->unsignedBigInteger('marcas_id'); // Columna marcas_id
             $table->integer('stock');
-            $table->text('descripcion')->nullable();
+             $table->string('descripcion')->nullable();
             $table->unsignedBigInteger('bodega_id');
             $table->timestamps();
             $table->unsignedBigInteger('categoria_id'); // Columna categoria_id

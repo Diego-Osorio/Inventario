@@ -22,7 +22,7 @@ class Ingreso extends Migration
             $table->string('ordencompra') ->nullable();
             $table->string('codigoproducto');
             $table->string('nombreproducto');
-            $table->string('cantidad')->nullable();
+            $table->string('cantidad');
             $table->timestamps();
         });
     

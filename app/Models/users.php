@@ -15,6 +15,7 @@ protected $fillable = [
     'password',
     'address',
     'phone',
+    'profile_image',
     'role',
 ];
 

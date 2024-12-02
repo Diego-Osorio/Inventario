@@ -28,39 +28,44 @@ class usuariosController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        $rules = [
-            'name'=>'required|min:5',
-            'email'=>'required|email',
-            'password'=>'required',
-            'address'=>'required',
-            'phone' =>'required',
-        ];
-        $messages =[
-            'name.required' => 'El nombre de usuario es Obligatorio',
-            'name.min' => 'El nombre de usuario debe tener m as de 5 caracteres ',
-            'email.required' => 'El Correo Electronico es Obligatorio',
-            'email.email' => 'Ingresa una direccion de correo electronico  valido',
-            'address.required' => 'La Direccion es obigatoria',
-            'phone.required' => 'El número de teléfono es obligatorio',
-            'password.required'=>'La contraseña es obligatoria ',
-            'password.min'=> 'La contraseña debe tener minimo 5 ',
+{
+    $rules = [
+        'name' => 'required|min:5',
+        'email' => 'required|email',
+        'password' => 'required',
+        'address' => 'required',
+        'avatar' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Validación de imagen
+        'phone' => 'required',
+    ];
 
-        ];
-        $this->validate($request, $rules, $messages);
+    $messages = [
+        'avatar.image' => 'El archivo debe ser una imagen.',
+        'avatar.mimes' => 'El archivo debe ser de tipo jpeg, png, jpg, gif o svg.',
+        'avatar.max' => 'El archivo no puede pesar más de 2MB.',
+    ];
 
-    /* Creando un nuevo usuario con los datos del formulario. */
-        /* Creando un nuevo usuario con los datos del formulario. */
-        User::create(
-            $request->only('name','email','address','phone')
-            + [
-                'role'=> 'admin','usuarios',
-                'password'=> bcrypt($request->input('password'))
-            ]
-        );
-        $notification ='El usuario se ha registrado correctamente.';
-        return redirect('/usuario')->with(compact('notification'));
+    $this->validate($request, $rules, $messages);
+
+    // Manejo de la imagen de perfil
+    $avatarPath = null;
+    if ($request->hasFile('avatar')) {
+        $avatar = $request->file('avatar');
+        $avatarPath = $avatar->storeAs('public/avatars', $request->name . '.' . $avatar->getClientOriginalExtension());
     }
+
+    // Crear el nuevo usuario con la foto
+    User::create(
+        $request->only('name', 'email', 'address', 'phone') + [
+            'role' => 'admin',
+            'password' => bcrypt($request->input('password')),
+            'avatar' => $avatarPath, // Guardar la ruta de la imagen
+        ]
+    );
+
+    $notification = 'El usuario se ha registrado correctamente.';
+    return redirect('/usuario')->with(compact('notification'));
+}
+
 
    
     public function show($id)
@@ -78,40 +83,45 @@ class usuariosController extends Controller
     public function update(Request $request, $id)
     {
         $rules = [
-            'name'=>'required|min:5',
-            'email'=>'required|email',
-            'password'=>'required|min:7',
-            'address'=>'required',
-            'phone' =>'required',
-            'role'=>'required',
+            'name' => 'required|min:5',
+            'email' => 'required|email',
+            'password' => 'required|min:7',
+            'address' => 'required',
+            'phone' => 'required',
+            'role' => 'required',
+            'avatar' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Validación de imagen
         ];
-        $messages =[
-            'name.required' => 'El nombre de usuario es obligatorio',
-            'name.min' => 'El nombre de usuario debe tener m as de 5 caracteres ',
-            'email.required' => 'El Correo Electronico es obligatorio',
-            'email.email' => 'Ingresa una direccion de correo electronico  valido',
-            'address.required' => 'La Direccion es obigatoria',
-            'phone.required' => 'El número de teléfono es obligatorio',
-            'password.min'=> 'La contraseña debe tener minimo 7 caracteres.',
-            'role.required'=>'el rol es requerido',
-
+    
+        $messages = [
+            'avatar.image' => 'El archivo debe ser una imagen.',
+            'avatar.mimes' => 'El archivo debe ser de tipo jpeg, png, jpg, gif o svg.',
+            'avatar.max' => 'El archivo no puede pesar más de 2MB.',
         ];
+    
         $this->validate($request, $rules, $messages);
+    
         $user = User::findOrFail($id);
-
-        $data =   $request->only('name','email','address','phone','role');
+        $data = $request->only('name', 'email', 'address', 'phone', 'role');
         $password = $request->input('password');
-
-        if($password)
-           $data['password'] = bcrypt($password);
-
-           $user->fill($data);
-           $user->save();
-
-        $notification ='La Informacion del usuario se actualizo correctamente.';
+    
+        if ($password) {
+            $data['password'] = bcrypt($password);
+        }
+    
+        // Manejo de la imagen de perfil
+        if ($request->hasFile('avatar')) {
+            $avatar = $request->file('avatar');
+            $avatarPath = $avatar->storeAs('public/avatars', $user->name . '.' . $avatar->getClientOriginalExtension());
+            $data['avatar'] = $avatarPath;
+        }
+    
+        // Actualizar el usuario
+        $user->fill($data);
+        $user->save();
+    
+        $notification = 'La información del usuario se actualizó correctamente.';
         return redirect('/usuario')->with(compact('notification'));
     }
-
    
     public function destroy($id)
     {

@@ -69,6 +69,7 @@ class ingresoController extends Controller
           $ingreso->ndocumento = $request->ndocumento;
           $ingreso->tipodocumento = $request->tipodocumento;
           $ingreso->ordencompra = $request->ordencompra;
+          $ingreso->cantidad = $request->cantidad;
           $ingreso->save();
   
           $productos = [];
@@ -82,7 +83,7 @@ class ingresoController extends Controller
               $producto->categoria_id =  $request->idcategoria[$cont];
               $producto->marcas_id = isset($request->marcas_id) ? $request->marcas_id : null;
               $producto->stock = $request->cantidad[$cont];
-              $producto->descripcion = $request->descripcion[$cont] ?? "Default Description";
+              $producto->descripcion = $request->descripcion[$cont] ?? null;
               $producto->bodega_id = $request->bodega_id;
               $producto->save();
               $productos[] = $producto;
@@ -111,7 +112,7 @@ class ingresoController extends Controller
   {
       // Obtener información del ingreso específico
       $ingreso = DB::table('ingreso')
-          ->select('ingreso.id', 'ingreso.fecha', 'ingreso.tipodocumento', 'ingreso.ndocumento', 'ingreso.ordencompra')
+          ->select('ingreso.id', 'ingreso.fecha', 'ingreso.tipodocumento', 'ingreso.ndocumento', 'ingreso.cantidad')
           ->where('ingreso.id', $id)
           ->first();
   

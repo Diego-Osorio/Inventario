@@ -29,7 +29,7 @@
       </button>
       <!-- Brand -->
       <a class="navbar-brand pt-0" href="{{url('/home')}} ">
-        <img src="{{asset('img/brand/blue.png')}}" class="navbar-brand-img" alt="...">
+        <img src="{{asset('img/brand/Inventario.png')}}" class="navbar-brand-img" alt="...">
       </a>
       <!-- User -->
       <ul class="nav align-items-center d-md-none">
@@ -48,8 +48,10 @@
           <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <div class="media align-items-center">
               <span class="avatar avatar-sm rounded-circle">
-                <img alt="Image placeholder" src="{{asset('img/theme/team-1-800x800.jpg')}}">
-              </span>
+        <img alt="Imagen de usuario" 
+             src="{{ auth()->user()->profile_image ? asset('storage/' . auth()->user()->profile_image) : asset('img/theme/default-avatar.jpg') }}" 
+             class="img-fluid" style="width: 40px; height: 40px;">
+    </span>
             </div>
           </a>
           @include('Includes.Panel.userOptions')
@@ -62,7 +64,7 @@
           <div class="row">
             <div class="col-6 collapse-brand">
               <a href="./index.html">
-                <img src="{{asset('img/brand/blue.png')}}">
+                <img src="{{asset('img/brand/Inventario.png')}}">
               </a>
             </div>
             <div class="col-6 collapse-close">

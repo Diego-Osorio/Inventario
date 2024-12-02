@@ -8,20 +8,10 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
 
 class RegisterController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Register Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles the registration of new users as well as their
-    | validation and creation. By default this controller uses a trait to
-    | provide this functionality without requiring any additional code.
-    |
-    */
-
     use RegistersUsers;
 
     /**
@@ -52,9 +42,8 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            
+            'avatar' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'], // Validación de imagen
         ]);
     }
 
@@ -66,11 +55,20 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        // Verificar si se subió una imagen
+        $avatarPath = null;
+        if (isset($data['avatar'])) {
+            // Guardar la imagen y obtener su ruta
+            $avatarPath = $data['avatar']->storeAs('public/avatars', $data['name'] . '.' . $data['avatar']->getClientOriginalExtension());
+        }
+
+        // Crear el usuario con los datos proporcionados
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'role' =>'usuario',
+            'role' => 'usuario',
             'password' => Hash::make($data['password']),
+            'avatar' => $avatarPath, // Guardar la ruta de la imagen si se subió
         ]);
     }
 }

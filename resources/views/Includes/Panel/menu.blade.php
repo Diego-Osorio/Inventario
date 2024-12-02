@@ -1,9 +1,20 @@
 
 <div class="text-center mb-4">
-<span class="avatar avatar-sm rounded-circle">
-                  <img alt="Image placeholder" src="{{asset('img/theme/team-4-800x800.jpg')}}">
-                </span>
-  <h6 class="mt-3 text-muted">{{ auth()->user()->role }}</h6>
+<div class="d-flex align-items-center">
+    <!-- Imagen de usuario -->
+    <span class="avatar avatar-sm rounded-circle">
+        <img alt="Imagen de usuario" 
+             src="{{ auth()->user()->profile_image ? asset('storage/' . auth()->user()->profile_image) : asset('img/theme/default-avatar.jpg') }}" 
+             class="img-fluid" style="width: 40px; height: 40px;">
+    </span>
+    
+    <!-- Información del usuario -->
+    <div class="ms-3 text-start">
+    <h6 class="mb-0">{{ auth()->user()->name }}</h6>
+    <h5 class="text-muted mt-1 mb-0">{{ auth()->user()->role }}</h5>
+</div>
+
+</div>  
 </div>
 
 <h6 class="navbar-heading text-muted">Menú</h6>
@@ -17,15 +28,14 @@
       <span class="">Inventario</span>
     </a>
     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-default_dropdown_1">
-      <a class="dropdown-item" href="{{url('/ingreso')}}">Registrar Ingreso</a>
-      <a class="dropdown-item" href="{{url('/ingreso/create')}}">Listar Productos</a>
-      <a class="dropdown-item" href="{{url('/salida')}}">Modificar Productos</a>
-      <a class="dropdown-item" href="{{url('/salida')}}">Eliminar Productos</a>
+      <a class="dropdown-item" href="{{url('/ingreso')}}">Inventario</a>
+      <a class="dropdown-item" href="{{url('/ingreso/create')}}"> Ingresar Productos</a>
+      
     </div>
   </li>
   @endif
 
-  <!-- Ingreso -->
+  <!-- Ingreso
   <li class="nav-item dropdown">
     <a class="nav-link nav-link-icon" href="#" id="navbar-default_dropdown_2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       <i class="fas fa-angle-double-right"></i>
@@ -34,10 +44,10 @@
     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-default_dropdown_2">
       <a class="dropdown-item" href="{{url('/ingreso/create')}}">Registrar Nuevo Ingreso</a>
     </div>
-  </li>
+  </li> -->
 
   <!-- Salida -->
-  <li class="nav-item dropdown">
+  <!-- <li class="nav-item dropdown">
     <a class="nav-link nav-link-icon" href="#" id="navbar-default_dropdown_3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       <i class="fas fa-angle-double-left"></i>
       <span class="">Salida</span>
@@ -46,7 +56,7 @@
       <a class="dropdown-item" href="{{url('/salida')}}">Registrar Nueva Salida</a>
       <a class="dropdown-item" href="#">Anular Salida</a>
     </div>
-  </li>
+  </li> -->
 
   <!-- Categoría/Marca/Bodegas -->
   <li class="nav-item dropdown">

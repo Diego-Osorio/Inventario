@@ -62,6 +62,10 @@ use Illuminate\Support\Str;
                     <label for="role">rol  </label>
                     <input type="text"name="role" class="form-control" value="{{old('role', $admin->role)}}" >
                  </div>
+                 <div class="form-group">
+    <label for="profile_image">Imagen de perfil</label>
+    <input type="file" class="form-control" name="profile_image" id="profile_image" accept="image/*">
+</div>
                  <button type="submit" class="btn btn-sm btn-primary ">Guardar Cambios</button>
                 </form>
                  </div>

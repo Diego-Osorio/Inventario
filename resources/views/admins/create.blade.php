@@ -58,6 +58,12 @@ use Illuminate\Support\Str;
                     <label for="address">Direccion </label>
                     <input type="text"name="address" class="form-control" value="{{old('address') }}" >
                  </div>
+                 <div class="form-group">
+                <label for="avatar">Foto de perfil</label>
+                <span class="avatar avatar-sm rounded-circle">
+    <img alt="Image placeholder" src="{{ asset('storage/avatars/' . (auth()->user()->avatar ?? 'default-avatar.jpg')) }}">
+</span>
+                </div>
 
                  <button type="submit" class="btn btn-sm btn-primary ">Crear usuario</button>
                 </form>

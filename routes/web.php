@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\MarcaController;
 use App\Http\Controllers\UsuariosController;
 use App\Http\Controllers\BodegasController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Auth;
 
 // Rutas públicas
@@ -27,9 +28,14 @@ Route::middleware(['web', 'auth', 'admin'])->group(function () {
     // Rutas de administración de usuarios
     Route::resource('usuario', AdminController::class);
     Route::resource('usuarios', UsuariosController::class);
+    
 
     // Rutas para Categorías
     Route::resource('categorias', CategoriasController::class);
+
+    // Rutas para profile
+    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
 
     // Rutas para Marcas
     Route::resource('marca', MarcaController::class);
@@ -58,4 +64,5 @@ Route::get('/ingreso/{ingreso}/show', [IngresoController::class, 'show']);
 Route::post('/ingreso', [IngresoController::class, 'sendData']);
 Route::put('/ingreso/{ingreso}', [IngresoController::class, 'update']);
 Route::delete('/ingreso/{ingreso}', [IngresoController::class, 'destroy']);
+
 
